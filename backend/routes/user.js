@@ -1,13 +1,19 @@
+require('dotenv').config();
+
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const User = require('../models/userModel')
+const requireAuth = require('../middleware/Auth')
+const JWT_SECRET =process.env.SECRET
 
-// router.get('/', (req, res) => {
-//     res.send('hello')
-// })
+
+router.get('/protected',requireAuth,(req,res) => {
+    res.send("hello user")
+})
 
 router.post('/signup', (req,res) => {
     const {name,email,password} = req.body
@@ -57,7 +63,8 @@ router.post('/signin',(req, res) => {
                 return err.status(401).json({message:"Authentication failed", error:err})
             }
             if(result){
-                return res.status(200).json({message:"Authentication Successfull"})
+                const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
+                res.json({token})
             }
         })
         // .then(doMatch=>{
