@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const lyricRoutes = require('./routes/lyrics.js')
-
+const userRoutes = require('./routes/user.js')
 
 mongoose.set('strictQuery', false);
 //express app
@@ -19,6 +19,7 @@ next()
 
 //routes
 app.use('/api/lyrics', lyricRoutes)
+app.use('/api/user', userRoutes)
 
 
 // connect to db
