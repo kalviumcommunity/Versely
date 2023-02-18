@@ -1,13 +1,90 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.logo{
+  display: flex;
+  margin-inline: auto;
+  width: 30vh;
+}
+.login-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+      to right,
+      #3A54AA 0%,
+      #3A54AA 50%,
+      white 50%,
+      white 100%
+    );
+}
+.loginvectordiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-inline: auto; */
+}
+.loginvector{
+  width: 60vh;
+  
+}
+.input{
+  margin: 1vh;
+  display: flex;
+  flex-direction: column;
+}
+.input input{
+  border-radius: 3px;
+  border: 1px solid grey;
+  width: 50vh;
+  height: 4vh;
+}
+.input label{
+  font-weight: 600;
+}
+.Login-form{
+  /* margin-inline: auto; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 50vh;
+}
+.Login-Title{
+  text-align: center;
+  margin: 1vh;
+}
+.Signup-button{
+  color: white;
+  background-color: #3A54AA;
+  border: none;
+  box-shadow: 0px 2px 4px grey;
+  border-radius: 3px;
+  width: 50vh;
+  height: 5vh;
+  margin: 1vh;
+}
+.Google-button{
+  color: black;
+  background-color: white;
+  border: none;
+  box-shadow: 0px 2px 4px grey;
+  border-radius: 3px;
+  width: 50vh;
+  height: 5vh;
+  margin: 1vh;
+}
+.google{
+  width: 4vh;
+  margin: 2px;
+}
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
