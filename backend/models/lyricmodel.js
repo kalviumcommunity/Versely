@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-
+const {ObjectId} = mongoose.Schema.Types
 const Schema = mongoose.Schema
 
-const lyricSchema = new Schema({
+const lyricSchema = new mongoose.Schema({
     SongName: {
         type: String,
         required: true
@@ -17,12 +17,17 @@ const lyricSchema = new Schema({
     },
     aboutLyrics: {
         type: String,
-        required: false
+        default:"no"
     },
     image: {
         type: String,
-        required: false
+        default:"no photo"
+    },
+    postedBy: {
+        type: ObjectId,
+        ref:"User",
+        required: true
     }
-},{timestamps: true})
+})
 
 module.exports = mongoose.model('Lyric', lyricSchema)
