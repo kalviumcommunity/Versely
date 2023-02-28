@@ -6,6 +6,7 @@
 }
 .logo{
   display: flex;
+  justify-content: center;
   margin-inline: auto;
   width: 30vh;
 }
@@ -30,8 +31,18 @@
   /* margin-inline: auto; */
 }
 .loginvector{
-  width: 60vh;
-  
+  width: 60vh; 
+}
+.loginvector3{
+  width: 60vh; 
+}
+.error{
+  color: #c62828;
+  text-align: center;
+}
+.message{
+  color:#43a047;
+  text-align: center;
 }
 .input{
   margin: 1vh;
@@ -53,11 +64,13 @@
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  width: 50vh;
+  margin-right: 2vh;
+  width: min(90%, 50vh)
 }
 .Login-Title{
   text-align: center;
   margin: 1vh;
+  /* margin-right: 56vh; */
 }
 .Signup-button{
   color: white;
@@ -87,4 +100,179 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 1150px) {
+  .login-container{
+    background: white;  
+  }
+  .loginvectordiv{
+    display: none;
+  }
+}
+
+/* -----------------CSS for the Home Page---------------- */
+
+.Box{
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+.Box h1{
+  text-align: center;
+  color: #3A54AA;
+  font-size: 7vh;
+}
+.Box img{
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  margin-top: 5vh;
+  width: 70vh;
+}
+.Box1{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  justify-content: space-around;
+}
+.Box1 h2{
+  font-size: 5vh;
+  font-weight: light;
+}
+.Box1 p{
+  font-size: 3vh;
+  width: 60vh;
+}
+.Box1 img{
+  width: 60vh;
+}
+.Box2{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+  justify-content: space-around;
+}
+.Box2 h2{
+  font-size: 5vh;
+  font-weight: light;
+}
+.Box2 p{
+  font-size: 3vh;
+  width: 50vh;
+}
+.Box2 img{
+  width: 40vh;
+}
+.Content{
+  margin-right: 20vh;
+}
+.songdiv{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.songcard{
+  text-align: center;
+  background-color: #3A54AA;
+  width: 30vh;
+  height: 40vh;
+  border-radius: 5px;
+  box-shadow: 0 0 4px grey;
+  color: white;
+  margin: 2vh;
+}
+.songcard img{
+  width: 25vh;
+  margin-top: 2vh;
+}
+
+.Box3 h2{
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  text-align: center;
+  font-size: 4vh;
+  font-weight: light;
+}
+.explorebutton{
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  width: 20vh;
+  color: white;
+  background-color: #3A54AA;
+  border-radius: 20px;
+  box-shadow: 0 0 4px grey;
+  text-decoration: none;
+  border: none;
+}
+
+.linkbutton{
+  text-decoration: none;
+  color: white;
+  padding: 1vh;
+}
+
+/* ------------------Contribute Page-------------------- */
+
+.Form h1{
+  text-align: center;
+  color: #3A54AA;
+  margin-top: 5vh;
+}
+.Form-div{
+  margin: 5vh;
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+}
+.Form-div input{
+  border-radius: 5px;
+  border: 2px solid #3A54AA;
+  height: 5vh;
+}
+.Form-div textarea{
+  border-radius: 5px;
+  border: 2px solid #3A54AA;
+  
+}
+.Songtextarea{
+  margin: 2vh;
+}
+.Abouttextarea{
+  margin: 2vh;
+}
+.contributebutton{
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-top: 2vh; */
+  margin-bottom: 5vh;
+  width: 30vh;
+  height: 5vh;
+  color: white;
+  background-color: #3A54AA;
+  border-radius: 20px;
+  box-shadow: 0 0 4px grey;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  align-items: center;
+}
+.contributeflex{
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width: 850px){
+  .contributeflex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

@@ -18,7 +18,7 @@ next()
 })
 
 //routes
-app.use('/api/lyrics', lyricRoutes)
+app.use('/api',lyricRoutes)
 app.use('/api/user', userRoutes)
 
 

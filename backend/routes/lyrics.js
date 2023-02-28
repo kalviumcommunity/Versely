@@ -1,40 +1,51 @@
-
 const express = require('express')
-const Lyric = require('../models/lyricmodel')
-
 const router = express.Router()
+const mongoose = require('mongoose')
+const Lyric = require('../models/lyricmodel')
+const requireAuth = require('../middleware/Auth')   
 
-//get all lyrics
-router.get('/',(req, res) => {
-    res.json({mssg: "Get all lyrics"})
+router.get('/alllyric',(req,res)=>{
+    Lyric.find()
+    .populate("postedBy","_id name")
+    .then(posts=>{
+        res.json({posts})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 })
 
-//get a single lyrics
-router.get('/:id',(req, res) => {
-    res.json({mssg: "Get a single workout"})
-})
-
-//post a lyric
-router.post('/', async(req, res) => {
-    const {SongName, Artist, lyrics, aboutLyrics, image } = req.body
-
-    try{    
-        const lyric = await Lyric.create({SongName, Artist, lyrics, aboutLyrics, image})
-        res.status(200).json(lyric)
+router.post('/createlyric',requireAuth,(req,res)=>{
+    const {SongName,Artist,lyrics,aboutLyrics,image} = req.body
+    if(!SongName || !Artist || !lyrics){
+        res.status(422).json({error:"please add all the fields"})
     }
-    catch(error){
-        res.status(400).json({error: error.message})
-    }
+    req.user.password = undefined
+    const post = new Lyric({
+        SongName,
+        Artist,
+        lyrics,
+        aboutLyrics,
+        image,
+        postedBy:req.user
+    })
+    post.save().then(result=>{
+        res.json({post:result})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 })
 
-//delete a lyric
-router.delete('/', (req, res) => {
-    res.json({mssg: "delete a lyric"})
-})
-
-//update a lyric
-router.patch('/', (req, res) => {
-    res.json({mssg: "update a lyric"})
+router.get('/mylyric',requireAuth,(req,res)=>{
+    Lyric.find({postedBy:req.user.id})
+    .populate("postedBy", "_id name")
+    .then(mylyric=>{
+        res.json({mylyric})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 })
 
 module.exports = router

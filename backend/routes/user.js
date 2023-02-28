@@ -11,9 +11,9 @@ const requireAuth = require('../middleware/Auth')
 const JWT_SECRET =process.env.SECRET
 
 
-router.get('/protected',requireAuth,(req,res) => {
-    res.send("hello user")
-})
+// router.get('/protected',requireAuth,(req,res) => {
+//     res.send("hello user")
+// })
 
 router.post('/signup', (req,res) => {
     const {name,email,password} = req.body
@@ -60,11 +60,12 @@ router.post('/signin',(req, res) => {
         }
         bcrypt.compare(password,savedUser.password,(err, result)=>{
             if(err){
-                return err.status(401).json({message:"Authentication failed", error:err})
+                return res.status(401).json({message:"Authentication failed", error:err})
             }
             if(result){
                 const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
-                res.json({token})
+                const {_id, name,email} = savedUser
+                res.json({token, user:{_id, name, email}})
             }
         })
         // .then(doMatch=>{
