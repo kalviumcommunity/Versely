@@ -181,7 +181,17 @@
   border-radius: 5px;
   box-shadow: 0 0 4px grey;
   color: white;
-  margin: 2vh;
+  margin: 7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.animate :hover{
+  /* transform: translate3D(0,-1px,0) scale(1.03); */
+  background-color: #183eb9;
+  transform: 0.5s ease;
 }
 .songcard img{
   width: 25vh;
@@ -264,6 +274,25 @@
   border: none;
   text-align: center;
   align-items: center;
+  cursor: pointer;
+}
+.contributeimagebutton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  margin-bottom: 5vh;
+  margin-top: 1vh;
+  padding-left: 5vh;
+}
+.contributeimagebutton::file-selector-button{
+  background-color: #3A54AA;
+  border: none;
+  width: 17vh;
+  height: 4vh;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
 }
 .contributeflex{
   display: flex;
@@ -275,4 +304,75 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+/* --------------Explore page------------------ */
+.Exploretitle{
+  color: #3A54AA;
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+
+/* -----------------------------------Song page-------------------- */
+.Song-container{  
+  margin-inline: auto;
+}
+
+.Song-name-div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 10vh;
+}
+.Song-name-div h1{
+  font-size: 7vh;
+  color: #3A54AA;
+}
+.Song-name-div h3{
+  font-size: 4vh
+}
+.Song-name-div img{
+  width: 25vh;
+}
+.Song-name-div article{
+  margin-right: 10vh;
+}
+.Song-lyrics-div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  line-height: 5vh;
+}
+.Song-lyrics-div p{
+  width: 50vh;
+}
+.AboutSongBox{
+  background-color: #f7f7f7;
+  border: 1px solid #3A54AA;
+  border-radius: 10px;
+  padding: 5vh;
+}
+.AboutSongBox h3{
+  color: #3A54AA;
+  text-align: center;
+}
+.improvementbutton{
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+  width: 30vh;
+  height: 5vh;
+  color: white;
+  background-color: #3A54AA;
+  border-radius: 20px;
+  box-shadow: 0 0 4px grey;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  align-items: center;
 }

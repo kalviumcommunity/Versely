@@ -110,25 +110,26 @@ body {
   }
 }
 /* ----------------Footes CSS---------- */
-.footer-div{
+/* .footer-div{
   margin: 5vh;
-}
+} */
 footer{
   background-color: hsl(0, 0%, 96%);
-  border-top: 1px solid black;
+  border-top: 0.5px solid black;
 }
 .footer{
   display: flex;
   flex-wrap: wrap;
-  margin: 2vh;
+  /* margin: 2vh; */
   justify-content: space-between;
+  align-items: center;
 }
 .footer-logo{
   width: 30vh;
 }
-.footer-link-div{
+/* .footer-link-div{
   margin: 6vh;
-}
+} */
 .footer-link{
   width: 7vh;
   margin: 1vh;
@@ -143,4 +144,10 @@ footer{
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+.logout-button{
+  border: none;
+  background-color: white;
+  font-size: 2.25vh;
+  cursor: pointer;
 }
