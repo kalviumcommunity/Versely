@@ -15,41 +15,39 @@ function Navbar() {
 
   const { state, dispatch } = useContext(UserContext);
   const renderList = () => {
-    if (state) {
-      return [
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>,
-        <li>
-          <NavLink to="/Explore">Explore</NavLink>
-        </li>,
-        <li>
-          <NavLink to="/Contribute">Contribute</NavLink>
-        </li>,
-        <li>
-          <button
-            className="logout-button"
-            onClick={() => {
-              localStorage.clear();
-              dispatch({ type: "CLEAR" });
-              Navigate("/");
-            }}
-          >
-            Logout
-          </button>
-        </li>,
-      ];
-    } else {
-      return [
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>,
-        <li>
-          <NavLink to="/Signup">Signup</NavLink>
-        </li>,
-        <NavLink to="/Login">Login</NavLink>,
-      ];
-    }
+    return state
+      ? [
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>,
+          <li>
+            <NavLink to="/Explore">Explore</NavLink>
+          </li>,
+          <li>
+            <NavLink to="/Contribute">Contribute</NavLink>
+          </li>,
+          <li>
+            <button
+              className="logout-button"
+              onClick={() => {
+                localStorage.clear();
+                dispatch({ type: "CLEAR" });
+                Navigate("/login");
+              }}
+            >
+              Logout
+            </button>
+          </li>,
+        ]
+      : [
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>,
+          <li>
+            <NavLink to="/Signup">Signup</NavLink>
+          </li>,
+          <NavLink to="/Login">Login</NavLink>,
+        ];
   };
 
   return (

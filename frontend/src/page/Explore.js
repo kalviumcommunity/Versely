@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
 
 function Explore() {
   const [data, setData] = useState([]);
@@ -24,41 +26,49 @@ function Explore() {
 
   if (loading) {
     return (
-      <div
-        className="loader"
-        style={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ScaleLoader color="#3A54AA" size={150} />
+      <div>
+        <Navbar />
+        <div
+          className="loader"
+          style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ScaleLoader color="#3A54AA" size={150} />
+        </div>
+        <Footer />
       </div>
     );
   }
 
   return (
     <div>
-      <h1 className="Exploretitle">Explore Song Lyircs</h1>
+      <Navbar />
       <div>
-        <div className="songdiv">
-          {data.map((item) => {
-            return (
-              <Link to={`/Song/${item._id}`}>
-                <div className="songcard" key={item._id}>
-                  <img src={item.image} alt="" />
-                  <div>
-                    <h3>{item.SongName}</h3>
-                    <p>{item.Artist}</p>
+        <h1 className="Exploretitle">Explore Song Lyircs</h1>
+        <div>
+          <div className="songdiv">
+            {data.map((item) => {
+              return (
+                <Link className="text-link" to={`/Song/${item._id}`}>
+                  <div className="songcard" key={item._id}>
+                    <img src={item.image} alt="" />
+                    <div>
+                      <h3>{item.SongName}</h3>
+                      <p>{item.Artist}</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -5,8 +5,6 @@ import Contribute from "./page/Contribute";
 import Login from "./page/Login";
 import Signup from "./page/Signup";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import Navbar from "./component/Navbar";
-import Footer from "./component/Footer";
 import Song from "./page/Song";
 import { reducer, initialState } from "./reducers/userReducer";
 
@@ -42,12 +40,11 @@ const Routing = () => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <UserContext.Provider value={{ state, dispatch }}>
       <div className="App">
-        <Navbar />
         <Routing />
-        <Footer />
       </div>
     </UserContext.Provider>
   );

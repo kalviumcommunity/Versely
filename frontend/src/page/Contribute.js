@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
 
 function Contribute() {
   const navigate = useNavigate();
@@ -101,84 +103,98 @@ function Contribute() {
 
   if (loading) {
     return (
-      <div
-        className="loader"
-        style={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ScaleLoader color="#3A54AA" size={150} />
+      <div>
+        <Navbar />
+        <div
+          className="loader"
+          style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ScaleLoader color="#3A54AA" size={150} />
+        </div>
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="Form">
-      <h1>Add a Song Lyric</h1>
-      <div className="Form-div">
-        <label>Song Name</label>
-        <input
-          type="text"
-          placeholder=" Song Name"
-          value={SongName}
-          onChange={(e) => setSongName(e.target.value)}
-        />
-        <br />
-        <label>Artist</label>
-        <input
-          type="text"
-          placeholder=" Artist's Name"
-          value={Artist}
-          onChange={(e) => setArtist(e.target.value)}
-        />
-        <div className="contributeflex">
-          <div className="Songtextarea">
-            <label>Song lyrics</label>
-            <textarea
-              rows="12"
-              cols="60"
-              placeholder="Song lyrics"
-              value={lyrics}
-              onChange={(e) => setlyrics(e.target.value)}
+    <div>
+      <Navbar />
+      <div className="Form">
+        <h1>Add a Song Lyric</h1>
+        <div className="Form-div">
+          <div className="Input-text-area">
+            <label>Song Name</label>
+            <input
+              type="text"
+              placeholder=" Song Name"
+              value={SongName}
+              onChange={(e) => setSongName(e.target.value)}
             />
           </div>
-          <div className="Abouttextarea">
-            <label>About Song and Explanation</label>
-            <textarea
-              rows="12"
-              cols="60"
-              placeholder="About the Song"
-              value={about}
-              onChange={(e) => setAbout(e.target.value)}
+          <br />
+          <div className="Input-text-area">
+            <label>Artist</label>
+            <input
+              type="text"
+              placeholder=" Artist's Name"
+              value={Artist}
+              onChange={(e) => setArtist(e.target.value)}
             />
+          </div>
+          <div className="contributeflex">
+            <div className="Songtextarea">
+              <label>Song lyrics</label>
+              <textarea
+                className="ContributeTextArea"
+                rows="12"
+                cols="60"
+                placeholder="Song lyrics"
+                value={lyrics}
+                onChange={(e) => setlyrics(e.target.value)}
+              />
+            </div>
+            <div className="Abouttextarea">
+              <label>About Song and Explanation</label>
+              <textarea
+                className="ContributeTextArea"
+                rows="12"
+                cols="60"
+                placeholder="About the Song"
+                value={about}
+                onChange={(e) => setAbout(e.target.value)}
+              />
+            </div>
           </div>
         </div>
+        <label
+          style={{
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            marginRight: "2vh",
+          }}
+        >
+          Upload Song Image
+        </label>
+        <input
+          className="contributeimagebutton"
+          type="file"
+          accept="image/png, image/jpg, image/gif, image/jpeg"
+          onChange={(e) => setUrl(e.target.files[0])}
+        />
+        <button className="contributebutton" onClick={() => postDetails()}>
+          Submit
+        </button>
+        {error && <p className="error"> {error} </p>}
+        {message && <p className="message"> {message} </p>}
       </div>
-      <label
-        style={{
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "center",
-          marginRight: "2vh",
-        }}
-      >
-        Upload Song Image
-      </label>
-      <input
-        className="contributeimagebutton"
-        type="file"
-        accept="image/png, image/jpg, image/gif, image/jpeg"
-        onChange={(e) => setUrl(e.target.files[0])}
-      />
-      <button className="contributebutton" onClick={() => postDetails()}>
-        Submit
-      </button>
-      {error && <p className="error"> {error} </p>}
-      {message && <p className="message"> {message} </p>}
+      <Footer />
     </div>
   );
 }

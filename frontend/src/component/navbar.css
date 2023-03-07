@@ -82,15 +82,17 @@ body {
   .menu-icon {
     display: block;
     cursor: pointer;
+    
   }
 
   .nav-elements {
     position: absolute;
     right: 0;
     top: 60px;
-    background-color: #fef7e5;
+    background-color: white;
     width: 0px;
-    height: calc(100vh - 60px);
+    height: calc(100vh);
+    /* height: 100%; */
     transition: all 0.3s ease-in;
     overflow: hidden;
   }

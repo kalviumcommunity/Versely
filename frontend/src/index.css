@@ -28,7 +28,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-inline: auto; */
 }
 .loginvector{
   width: 60vh; 
@@ -51,15 +50,15 @@
 }
 .input input{
   border-radius: 3px;
+  padding: 5px;
   border: 1px solid grey;
-  width: 50vh;
+  width: 48.2vh;
   height: 4vh;
 }
 .input label{
   font-weight: 600;
 }
 .Login-form{
-  /* margin-inline: auto; */
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -70,7 +69,6 @@
 .Login-Title{
   text-align: center;
   margin: 1vh;
-  /* margin-right: 56vh; */
 }
 .Signup-button{
   color: white;
@@ -81,6 +79,7 @@
   width: 50vh;
   height: 5vh;
   margin: 1vh;
+  cursor: pointer;
 }
 .Google-button{
   color: black;
@@ -91,6 +90,7 @@
   width: 50vh;
   height: 5vh;
   margin: 1vh;
+  cursor: pointer;
 }
 .google{
   width: 4vh;
@@ -126,24 +126,32 @@
   justify-content: center;
   margin-inline: auto;
   margin-top: 5vh;
-  width: 70vh;
+  width: min(90%,70vh);
 }
 .Box1{
   display: flex;
   flex-wrap: wrap;
+  width: 150vh;
   margin-top: 10vh;
   margin-bottom: 10vh;
+  margin-inline: auto;
   justify-content: space-around;
 }
 .Box1 h2{
   font-size: 5vh;
   font-weight: light;
+  margin: 0;
+  padding: 0;
 }
 .Box1 p{
   font-size: 3vh;
   width: 60vh;
 }
+/* .imgdiv{
+  width: min(60%, 60vh);} */
+
 .Box1 img{
+  /* width: min(60%,70vh); */
   width: 60vh;
 }
 .Box2{
@@ -151,27 +159,76 @@
   flex-wrap: wrap;
   margin-top: 20vh;
   margin-bottom: 10vh;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 150vh;
+  margin-inline: auto;
 }
 .Box2 h2{
   font-size: 5vh;
   font-weight: light;
+  margin: 0;
+  padding: 0;
 }
 .Box2 p{
   font-size: 3vh;
   width: 50vh;
 }
 .Box2 img{
-  width: 40vh;
+  width: 40vh ;
+  /* max-width: 100%; */
 }
 .Content{
-  margin-right: 20vh;
+  margin-right: 30vh;
+}
+@media only screen and (max-width: 600px){
+  .Box1{
+    width: min(90%,60vh);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-inline: auto;
+  }
+  .Box1 img{
+    width: min(80%,60vh);
+  }
+  .Box2 img{
+    width: min(60%, 60vh);
+  }
+  .Box2{
+    width: min(90%, 60vh);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-inline: auto;
+  }
+  .Box2 p{
+    font-size: 2vh;
+    width: 40vh;
+  }
+  .Box1 h2{
+    font-size: 4vh;
+  }
+  .Box2 h2{
+    font-size: 4vh;
+  }
+  .Box1 p{
+    font-size: 2vh;
+    width: 40vh;
+  }
+  .Content{
+    margin-right: 0vh;
+    margin-inline: auto;
+  }
 }
 .songdiv{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+}
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
 }
 .songcard{
   text-align: center;
@@ -219,16 +276,21 @@
   box-shadow: 0 0 4px grey;
   text-decoration: none;
   border: none;
+  cursor: pointer;
 }
 
 .linkbutton{
   text-decoration: none;
   color: white;
   padding: 1vh;
+  cursor: pointer;
 }
 
 /* ------------------Contribute Page-------------------- */
-
+/* .Form{
+width: min(90%, 70vh);
+margin-inline: auto;
+} */
 .Form h1{
   text-align: center;
   color: #3A54AA;
@@ -240,6 +302,12 @@
   display: flex;
   flex-direction: column;
   margin-inline: auto;
+}
+.Input-text-area{
+  margin: 2vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 .Form-div input{
   border-radius: 5px;
@@ -298,12 +366,18 @@
   display: flex;
   justify-content: center;
 }
+.ContributeTextArea{
+  margin-left: auto;
+  margin-left: auto;
+  width: 45vh;
+}
 @media only screen and (max-width: 850px){
   .contributeflex{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
+
 }
 /* --------------Explore page------------------ */
 .Exploretitle{
@@ -353,6 +427,10 @@
   border: 1px solid #3A54AA;
   border-radius: 10px;
   padding: 5vh;
+  width: 35vh;
+}
+.AboutSongBox p{
+  width: 35vh;
 }
 .AboutSongBox h3{
   color: #3A54AA;
@@ -375,4 +453,27 @@
   border: none;
   text-align: center;
   align-items: center;
+  cursor: pointer;
 }
+@media only screen and (max-width:600px){
+  .AboutSongBox{
+    margin-top: 5vh;
+  }
+  .Song-lyrics-div p{
+    width: 40vh;
+    /* margin-inline: auto; */
+  }
+  .Song-name-div article{
+    text-align: center;
+    margin-inline: auto;
+  }
+  .Song-name-div h1{
+    font-size: 5vh;
+  }
+}
+
+/* #toast-container{
+  top:30px !important;
+  right:20px !important;
+  left:auto !important;
+} */

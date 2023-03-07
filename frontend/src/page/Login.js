@@ -5,6 +5,8 @@ import loginpic3 from "../asset/loginpic3.png";
 import logo from "../asset/logo.png";
 import google from "../asset/google.png";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
@@ -12,14 +14,9 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
-
-  // setTimeout(() => {
-  //   setLoading(true);
-  // }, 700);
 
   const PostData = () => {
+    setLoading(true);
     fetch("/api/user/signin", {
       method: "post",
       headers: {
@@ -32,43 +29,43 @@ function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.error) {
-          setError(data.error);
+          toast.error(data.error);
+          setLoading(false);
         } else {
-          setMessage(data.message);
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+          toast.success("Successfully Logged In");
           dispatch({ type: "USER", payload: data.user });
-          window.alert("Successfully LoggedIn");
-          setLoading(true);
+          setLoading(false);
           setTimeout(() => {
             navigate("/");
-          }, 2000);
+          }, 3000);
         }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  if (loading) {
-    return (
-      <div
-        className="loader"
-        style={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ScaleLoader color="#3A54AA" size={150} />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div
+  //       className="loader"
+  //       style={{
+  //         width: "100%",
+  //         height: "100vh",
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //       }}
+  //     >
+  //       <ScaleLoader color="#3A54AA" size={150} />
+  //     </div>
+  //   );
+  // }
   return (
     <div>
+      <ToastContainer />
       <div className="login-container">
         <div className="loginvectordiv">
           <img className="loginvector3" src={loginpic3} alt="img" />
@@ -84,7 +81,7 @@ function Login() {
             <label>Email Id</label>
             <input
               type="email"
-              placeholder=" Email id"
+              placeholder="Email id"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -93,18 +90,27 @@ function Login() {
             <label>Password</label>
             <input
               type="password"
-              placeholder=" Password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {error && <p className="error"> {error} </p>}
-          {message && <p className="message"> {message} </p>}
+
           <div>
-            <button className="Signup-button" onClick={() => PostData()}>
-              Login
+            <button
+              className="Signup-button"
+              onClick={PostData}
+              disabled={loading}
+            >
+              {loading && (
+                <div>
+                  <ScaleLoader color="white" height={15} />
+                </div>
+              )}
+              {!loading && <span>Login</span>}
             </button>
           </div>
+
           <div>
             <button className="Google-button">
               <div className="flex">
@@ -115,7 +121,10 @@ function Login() {
           </div>
           <div>
             <p className="Login-Title">
-              Don't have an account ?<Link to="/Signup">Signup</Link>
+              Don't have an account ?
+              <Link style={{ color: "#3A54AA" }} to="/Signup">
+                Signup
+              </Link>
             </p>
           </div>
         </div>

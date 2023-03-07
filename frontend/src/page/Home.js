@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Home1 from "../asset/Home1.png";
 import Home2 from "../asset/Home2.jpg";
@@ -7,11 +7,52 @@ import Songimage from "../asset/songimage1.png";
 import Songimage2 from "../asset/songimage2.jpg";
 import Songimage3 from "../asset/songimage3.jpg";
 import Songimage4 from "../asset/songimage4.png";
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function Home() {
   const Navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/alllyric", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result.posts[0]._id);
+        setData(result.posts);
+      });
+  }, []);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 3000);
+
+  if (loading) {
+    return (
+      <div
+        className="loader"
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ScaleLoader color="#3A54AA" size={150} />
+      </div>
+    );
+  }
+
   return (
     <div>
+      <Navbar />
       <div className="Box">
         <h1>Elevating the music experience.</h1>
         <img src={Home1} alt="" />
@@ -29,7 +70,7 @@ function Home() {
             in different languages and more...
           </p>
         </div>
-        <div>
+        <div className="imgdiv">
           <img src={Home2} alt="" />
         </div>
       </div>
@@ -52,43 +93,58 @@ function Home() {
       </div>
       <div className="Box3">
         <h2>Explore Song Lyrics</h2>
-        <button>{Navigate("/Song")}</button>
         <div className="songdiv">
-          <Link to="/Song/63fee27773593adf8c1223a6">
+          {data.slice(0, 4).map((item) => {
+            return (
+              <Link className="text-link" to={`/Song/${item._id}`}>
+                <div className="songcard" key={item._id}>
+                  <img src={item.image} alt="" />
+                  <div>
+                    <h3>{item.SongName}</h3>
+                    <p>{item.Artist}</p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+        {/* <div className="songdiv">
+          <Link className="text-link" to="/Song/63fee27773593adf8c1223a6">
             <div className="songcard">
               <img src={Songimage} alt="" />
               <h3>Until I Found You</h3>
               <p>Stephen Sanchez</p>
             </div>
           </Link>
-          <Link to="/Song/640033003ddfd670c13fcf67">
+          <Link className="text-link" to="/Song/640033003ddfd670c13fcf67">
             <div className="songcard">
               <img src={Songimage2} alt="" />
               <h3>Thunderstruck</h3>
               <p>AC/DC</p>
             </div>
           </Link>
-          <Link to="/Song/640034353ddfd670c13fcf83">
+          <Link className="text-link" to="/Song/640034353ddfd670c13fcf83">
             <div className="songcard">
               <img src={Songimage3} alt="" />
               <h3>Agar Tum Sath Ho</h3>
               <p>Alka Yagnik, Arjit Singh</p>
             </div>
           </Link>
-          <Link to="/Song/640033ae3ddfd670c13fcf76">
+          <Link className="text-link" to="/Song/640033ae3ddfd670c13fcf76">
             <div className="songcard">
               <img src={Songimage4} alt="" />
               <h3>Mood</h3>
               <p>24KGoldn</p>
             </div>
           </Link>
-        </div>
+        </div> */}
         <button className="explorebutton">
           <Link className="linkbutton" to="/Explore">
             Explore more..
           </Link>
         </button>
       </div>
+      <Footer />
     </div>
   );
 }
