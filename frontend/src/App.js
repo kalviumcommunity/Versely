@@ -20,7 +20,7 @@ const Routing = () => {
       dispatch({ type: "USER", payload: user });
       navigate("/");
     } else {
-      navigate("/Login");
+      navigate("/login");
     }
   }, []);
 

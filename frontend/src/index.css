@@ -52,7 +52,7 @@
   border-radius: 3px;
   padding: 5px;
   border: 1px solid grey;
-  width: 48.2vh;
+  max-width: 50vh;
   height: 4vh;
 }
 .input label{
@@ -224,6 +224,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  gap: 7vh;
   justify-content: space-around;
 }
 .text-link {
@@ -238,7 +239,7 @@
   border-radius: 5px;
   box-shadow: 0 0 4px grey;
   color: white;
-  margin: 7vh;
+  /* margin: 5vh; */
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -15,47 +15,12 @@ function Contribute() {
   const [about, setAbout] = useState("");
   const [url, setUrl] = useState("");
 
-  // useEffect(() => {
-  //   if (url) {
-  //     fetch("/api/createlyric", {
-  //       method: "post",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + localStorage.getItem("jwt"),
-  //       },
-  //       body: JSON.stringify({
-  //         SongName,
-  //         Artist,
-  //         lyrics,
-  //         aboutLyrics: about,
-  //         image: url,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.error) {
-  //           setError(data.error);
-  //         } else {
-  //           setMessage(data.message);
-  //           window.alert(
-  //             "Lyric created successfully,Thankyou for contributing"
-  //           );
-  //           setLoading(true);
-  //           navigate("/Explore");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // },);
-
   const postDetails = () => {
     const data = new FormData();
     data.append("file", url);
     data.append("upload_preset", "Versely");
     data.append("cloud_name", "dccplpniz");
-    fetch("https://api.cloudinary.com/v1_1/dccplpniz/image/upload", {
+    fetch(process.env.REACT_APP_CLOUDAPI, {
       method: "post",
       body: data,
     })

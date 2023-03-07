@@ -47,7 +47,7 @@ function Explore() {
     <div>
       <Navbar />
       <div>
-        <h1 className="Exploretitle">Explore Song Lyircs</h1>
+        <h1 className="Exploretitle">Explore Song Lyrics</h1>
         <div>
           <div className="songdiv">
             {data.map((item) => {

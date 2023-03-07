@@ -19,8 +19,6 @@ function Song() {
     fetchData();
   }, [id, lyrics]);
 
-  console.log(lyrics);
-
   return (
     <>
       {loading ? (
@@ -57,8 +55,7 @@ function Song() {
                 <p>{lyrics.lyric.lyrics}</p>
               </div>
               <div>
-                if({lyrics.lyric.aboutLyrics})
-                {
+                {lyrics.lyric.aboutLyrics ? (
                   <div className="AboutSongBox">
                     <h3>About the Song</h3>
                     <p>{lyrics.lyric.aboutLyrics}</p>
@@ -66,7 +63,9 @@ function Song() {
                       Suggest an improvement
                     </button>
                   </div>
-                }
+                ) : (
+                  <div></div>
+                )}
               </div>
             </div>
           </div>
