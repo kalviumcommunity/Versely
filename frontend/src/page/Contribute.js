@@ -6,7 +6,7 @@ import Footer from "../component/Footer";
 
 function Contribute() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [SongName, setSongName] = useState("");
@@ -14,10 +14,6 @@ function Contribute() {
   const [lyrics, setlyrics] = useState("");
   const [about, setAbout] = useState("");
   const [url, setUrl] = useState("");
-
-  setTimeout(() => {
-    setLoading(false);
-  }, 700);
 
   // useEffect(() => {
   //   if (url) {
@@ -93,7 +89,7 @@ function Contribute() {
           setMessage(data.message);
           window.alert("Lyric created successfully,Thankyou for contributing");
           setLoading(true);
-          navigate("/Explore");
+          navigate("/explore");
         }
       })
       .catch((err) => {

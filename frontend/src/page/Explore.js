@@ -18,9 +18,7 @@ function Explore() {
       .then((result) => {
         console.log(result.posts[0]._id);
         setData(result.posts);
-        setTimeout(() => {
-          setLoading(false);
-        }, 500);
+        setLoading(false);
       });
   }, []);
 
@@ -54,7 +52,7 @@ function Explore() {
           <div className="songdiv">
             {data.map((item) => {
               return (
-                <Link className="text-link" to={`/Song/${item._id}`}>
+                <Link className="text-link" to={`/song/${item._id}`}>
                   <div className="songcard" key={item._id}>
                     <img src={item.image} alt="" />
                     <div>

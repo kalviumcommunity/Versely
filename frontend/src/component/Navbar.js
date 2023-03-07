@@ -6,7 +6,7 @@ import logo from "../asset/logo.png";
 import Hamburger from "../asset/hamburger.svg";
 
 function Navbar() {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const [showNavbar, setShowNavbar] = useState(false);
 
   const handleShowNavbar = () => {
@@ -21,10 +21,10 @@ function Navbar() {
             <NavLink to="/">Home</NavLink>
           </li>,
           <li>
-            <NavLink to="/Explore">Explore</NavLink>
+            <NavLink to="/explore">Explore</NavLink>
           </li>,
           <li>
-            <NavLink to="/Contribute">Contribute</NavLink>
+            <NavLink to="/contribute">Contribute</NavLink>
           </li>,
           <li>
             <button
@@ -32,7 +32,7 @@ function Navbar() {
               onClick={() => {
                 localStorage.clear();
                 dispatch({ type: "CLEAR" });
-                Navigate("/login");
+                navigate("/login");
               }}
             >
               Logout
@@ -44,9 +44,9 @@ function Navbar() {
             <NavLink to="/">Home</NavLink>
           </li>,
           <li>
-            <NavLink to="/Signup">Signup</NavLink>
+            <NavLink to="/signup">Signup</NavLink>
           </li>,
-          <NavLink to="/Login">Login</NavLink>,
+          <NavLink to="/login">Login</NavLink>,
         ];
   };
 

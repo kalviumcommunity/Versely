@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Home1 from "../asset/Home1.png";
 import Home2 from "../asset/Home2.jpg";
 import Home3 from "../asset/Home3.png";
-import Songimage from "../asset/songimage1.png";
-import Songimage2 from "../asset/songimage2.jpg";
-import Songimage3 from "../asset/songimage3.jpg";
-import Songimage4 from "../asset/songimage4.png";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 function Home() {
-  const Navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -29,9 +24,7 @@ function Home() {
       });
   }, []);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 3000);
+  // setLoading(false);
 
   if (loading) {
     return (
@@ -96,7 +89,7 @@ function Home() {
         <div className="songdiv">
           {data.slice(0, 4).map((item) => {
             return (
-              <Link className="text-link" to={`/Song/${item._id}`}>
+              <Link className="text-link" to={`/song/${item._id}`}>
                 <div className="songcard" key={item._id}>
                   <img src={item.image} alt="" />
                   <div>
@@ -108,38 +101,8 @@ function Home() {
             );
           })}
         </div>
-        {/* <div className="songdiv">
-          <Link className="text-link" to="/Song/63fee27773593adf8c1223a6">
-            <div className="songcard">
-              <img src={Songimage} alt="" />
-              <h3>Until I Found You</h3>
-              <p>Stephen Sanchez</p>
-            </div>
-          </Link>
-          <Link className="text-link" to="/Song/640033003ddfd670c13fcf67">
-            <div className="songcard">
-              <img src={Songimage2} alt="" />
-              <h3>Thunderstruck</h3>
-              <p>AC/DC</p>
-            </div>
-          </Link>
-          <Link className="text-link" to="/Song/640034353ddfd670c13fcf83">
-            <div className="songcard">
-              <img src={Songimage3} alt="" />
-              <h3>Agar Tum Sath Ho</h3>
-              <p>Alka Yagnik, Arjit Singh</p>
-            </div>
-          </Link>
-          <Link className="text-link" to="/Song/640033ae3ddfd670c13fcf76">
-            <div className="songcard">
-              <img src={Songimage4} alt="" />
-              <h3>Mood</h3>
-              <p>24KGoldn</p>
-            </div>
-          </Link>
-        </div> */}
         <button className="explorebutton">
-          <Link className="linkbutton" to="/Explore">
+          <Link className="linkbutton" to="/explore">
             Explore more..
           </Link>
         </button>

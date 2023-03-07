@@ -11,16 +11,16 @@ import { reducer, initialState } from "./reducers/userReducer";
 export const UserContext = createContext();
 
 const Routing = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
       dispatch({ type: "USER", payload: user });
-      Navigate("/");
+      navigate("/");
     } else {
-      Navigate("/Login");
+      navigate("/Login");
     }
   }, []);
 
@@ -28,11 +28,11 @@ const Routing = () => {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Explore" element={<Explore />} />
-        <Route path="/Contribute" element={<Contribute />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/Song/:id" element={<Song />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/contribute" element={<Contribute />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/song/:id" element={<Song />} />
       </Routes>
     </>
   );

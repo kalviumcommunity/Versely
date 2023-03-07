@@ -60,22 +60,6 @@ function Signup() {
         console.log(err);
       });
   };
-  // if (loading) {
-  //   return (
-  //     <div
-  //       className="loader"
-  //       style={{
-  //         width: "100%",
-  //         height: "100vh",
-  //         display: "flex",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //       }}
-  //     >
-  //       <ScaleLoader color="#3A54AA" size={150} />
-  //     </div>
-  //   );
-  // }
 
   return (
     <div>
@@ -144,7 +128,7 @@ function Signup() {
           <div>
             <p className="Login-Title">
               Already have an account{" "}
-              <Link style={{ color: "#3A54AA" }} to="/Login">
+              <Link style={{ color: "#3A54AA" }} to="/login">
                 Login
               </Link>
             </p>

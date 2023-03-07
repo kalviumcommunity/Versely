@@ -14,9 +14,7 @@ function Song() {
       const response = await fetch(`/api/lyric/${id}`);
       const json = await response.json();
       setLyrics(json);
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+      setLoading(false);
     };
     fetchData();
   }, [id, lyrics]);
@@ -59,13 +57,16 @@ function Song() {
                 <p>{lyrics.lyric.lyrics}</p>
               </div>
               <div>
-                <div className="AboutSongBox">
-                  <h3>About the Song</h3>
-                  <p>{lyrics.lyric.aboutLyrics}</p>
-                  <button className="improvementbutton">
-                    Suggest an improvement
-                  </button>
-                </div>
+                if({lyrics.lyric.aboutLyrics})
+                {
+                  <div className="AboutSongBox">
+                    <h3>About the Song</h3>
+                    <p>{lyrics.lyric.aboutLyrics}</p>
+                    <button className="improvementbutton">
+                      Suggest an improvement
+                    </button>
+                  </div>
+                }
               </div>
             </div>
           </div>
