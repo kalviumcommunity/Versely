@@ -10,10 +10,6 @@ const User = require("../models/userModel");
 const requireAuth = require("../middleware/Auth");
 const JWT_SECRET = process.env.SECRET;
 
-// router.get('/protected',requireAuth,(req,res) => {
-//     res.send("hello user")
-// })
-
 router.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
   if (!email || !password || !name) {
