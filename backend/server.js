@@ -6,11 +6,10 @@ const lyricRoutes = require("./routes/lyrics.js");
 const userRoutes = require("./routes/user.js");
 const cors = require("cors");
 
-app.use(cors("http://localhost:3000", "https://versely-static.onrender.com"));
-
 mongoose.set("strictQuery", false);
 //express app
 const app = express();
+app.use(cors("http://localhost:3000", "https://versely-static.onrender.com"));
 
 // middleware
 app.use(express.json());
