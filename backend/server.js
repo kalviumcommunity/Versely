@@ -4,6 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const lyricRoutes = require("./routes/lyrics.js");
 const userRoutes = require("./routes/user.js");
+const cors = require("cors");
+
+app.use(cors());
 
 mongoose.set("strictQuery", false);
 //express app
