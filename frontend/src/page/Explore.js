@@ -10,7 +10,7 @@ function Explore() {
   const [List, setList] = useState(data);
 
   useEffect(() => {
-    fetch("/api/alllyric", {
+    fetch(process.env.REACT_APP_API + "/api/alllyric", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

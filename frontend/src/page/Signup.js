@@ -31,7 +31,7 @@ function Signup() {
       );
       return;
     }
-    fetch("/api/user/signup", {
+    fetch(process.env.REACT_APP_API + "/api/user/signup", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

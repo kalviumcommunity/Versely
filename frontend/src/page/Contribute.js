@@ -36,7 +36,7 @@ function Contribute() {
       });
   };
   useEffect(() => {
-    fetch("/api/createlyric", {
+    fetch(process.env.REACT_APP_API + "/api/createlyric", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

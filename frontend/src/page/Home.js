@@ -12,7 +12,7 @@ function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/alllyric", {
+    fetch(process.env.REACT_APP_API + "/api/alllyric", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

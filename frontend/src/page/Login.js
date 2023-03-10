@@ -17,7 +17,7 @@ function Login() {
 
   const PostData = () => {
     setLoading(true);
-    fetch("/api/user/signin", {
+    fetch(process.env.REACT_APP_API + "/api/user/signin", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
