@@ -6,13 +6,11 @@ const lyricRoutes = require("./routes/lyrics.js");
 const userRoutes = require("./routes/user.js");
 const cors = require("cors");
 
-app.use(cors());
+app.use(cors("http://localhost:3000", "https://versely-static.onrender.com"));
 
 mongoose.set("strictQuery", false);
 //express app
 const app = express();
-
-const port = process.env.PORT || 5000;
 
 // middleware
 app.use(express.json());
@@ -32,7 +30,7 @@ mongoose
     console.log("connected to database");
 
     //listen to port
-    app.listen(port, () => {
+    app.listen(process.env.PORT, () => {
       console.log("listening on port", process.env.PORT);
     });
   })
