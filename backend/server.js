@@ -9,6 +9,8 @@ mongoose.set("strictQuery", false);
 //express app
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 // middleware
 app.use(express.json());
 app.use((req, res, next) => {
@@ -27,7 +29,7 @@ mongoose
     console.log("connected to database");
 
     //listen to port
-    app.listen(process.env.PORT, () => {
+    app.listen(port, () => {
       console.log("listening on port", process.env.PORT);
     });
   })
