@@ -62,19 +62,15 @@ router.get("/lyric/:id", (req, res) => {
     });
 });
 
-// router.delete("/deletelyric/:id", requireAuth, (req, res) => {
-//   Lyric.findOne({ _id: req.params.id })
-//     .populate("postedBy", "_id name")
-//     .exec((err, post) => {
-//       if (err || !post) {
-//         return res.status(422).json({ error: err });
-//       }
-//       if (req.user._id.toString() === "63f9e3f0d09623d4d68534d6") {
-//         post.remove().then((result) => {
-//           // console.log(err);
-//         });
-//       }
-//     });
-// });
+router.post("/search-lyric", (req, res) => {
+  let lyricPattern = new RegExp("^" + req.body.query);
+  Lyric.find({ SongName: { $regex: lyricPattern } })
+    .then((lyric) => {
+      res.json({ lyric });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 module.exports = router;

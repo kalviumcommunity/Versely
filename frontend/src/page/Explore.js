@@ -7,6 +7,7 @@ import Footer from "../component/Footer";
 function Explore() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [List, setList] = useState(data);
 
   useEffect(() => {
     fetch("/api/alllyric", {
@@ -21,6 +22,17 @@ function Explore() {
         setLoading(false);
       });
   }, []);
+
+  const letdata = Object.values(data);
+  const search_parameters = Object.keys(Object.assign({}, ...letdata));
+
+  function search(data) {
+    return data.filter((item) =>
+      search_parameters.some((parameter) =>
+        item[parameter].toString().toLowerCase().includes(List)
+      )
+    );
+  }
 
   if (loading) {
     return (
@@ -49,8 +61,16 @@ function Explore() {
       <div>
         <h1 className="Exploretitle">Explore Song Lyrics</h1>
         <div>
+          <div className="Search-button-div">
+            <input
+              className="Search-button"
+              type="text"
+              placeholder="Search Lyrics here..."
+              onChange={(e) => setList(e.target.value)}
+            />
+          </div>
           <div className="songdiv">
-            {data.map((item) => {
+            {search(letdata).map((item) => {
               return (
                 <Link className="text-link" to={`/song/${item._id}`}>
                   <div className="songcard" key={item._id}>

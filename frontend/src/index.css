@@ -386,6 +386,18 @@ margin-inline: auto;
   margin-top: 10vh;
   margin-bottom: 5vh;
 }
+.Search-button-div{
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  margin-inline: auto;
+  width: 40vh;
+}
+.Search-button{
+  width: 40vh;
+  border-radius: 7px;
+  border:2px solid #3A54AA;
+  padding: 1vh;
+}
 
 /* -----------------------------------Song page-------------------- */
 .Song-container{  
