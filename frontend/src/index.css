@@ -224,7 +224,6 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 7vh;
   justify-content: space-around;
 }
 .text-link {
@@ -239,7 +238,7 @@
   border-radius: 5px;
   box-shadow: 0 0 4px grey;
   color: white;
-  /* margin: 5vh; */
+  margin: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
