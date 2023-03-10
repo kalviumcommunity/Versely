@@ -9,6 +9,17 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const requireAuth = require("../middleware/Auth");
 const JWT_SECRET = process.env.SECRET;
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key:
+        "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",
+    },
+  })
+);
 
 router.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
@@ -32,6 +43,12 @@ router.post("/signup", (req, res) => {
         user
           .save()
           .then((user) => {
+            transporter.sendMail({
+              to: user.email,
+              from: "praduman03k@gmail.com",
+              subject: "Thankypu for signing up to Versely",
+              html: "<h1>Welcome to Versely</h1>",
+            });
             res.json({ message: "Saved successfully" });
           })
           .catch((err) => {
