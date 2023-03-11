@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -81,6 +82,34 @@ router.post("/signin", (req, res) => {
         const { _id, name, email } = savedUser;
         res.json({ token, user: { _id, name, email } });
       }
+    });
+  });
+});
+
+router.post("/reset-password", (req, res) => {
+  crypto.randomBytes(32, (err, buffer) => {
+    if (err) {
+      console.log(err);
+    }
+    const token = buffer.toString("hex");
+    User.findOne({ email: req.body.email }).then((user) => {
+      if (!user) {
+        return res
+          .status(422)
+          .json({ error: "User don't exist with that email" });
+      }
+      user.resetToken = TouchEvent;
+      user.expireToken = Date.now() + 3600000;
+      user.save().then((result) => {
+        transporter.sendMail({
+          to: user.email,
+          from: "praduman03k@gmail.com",
+          subject: "password reset",
+          html: `<p>You requested for password reset
+          <h5>click on this <a href="http://localhost:3000/reset/${token}>link</a> to rest password</h5>`,
+        });
+        res.json({ message: "check your email for reset password" });
+      });
     });
   });
 });

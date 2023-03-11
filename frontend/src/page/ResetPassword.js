@@ -1,29 +1,24 @@
-import React, { useState, useContext } from "react";
-import { UserContext } from "../App";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import loginpic3 from "../asset/loginpic3.png";
 import logo from "../asset/logo.png";
-import google from "../asset/google.png";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Login() {
-  const { state, dispatch } = useContext(UserContext);
+function ResetPassword() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
   const PostData = () => {
     setLoading(true);
-    fetch(process.env.REACT_APP_API + "api/user/signin", {
+    fetch(process.env.REACT_APP_API + "/api/user/reset-password", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        password,
         email,
       }),
     })
@@ -33,13 +28,10 @@ function Login() {
           toast.error(data.error);
           setLoading(false);
         } else {
-          localStorage.setItem("jwt", data.token);
-          localStorage.setItem("user", JSON.stringify(data.user));
-          toast.success("Successfully Logged In");
-          dispatch({ type: "USER", payload: data.user });
+          toast.success({ html: data.message });
           setLoading(false);
           setTimeout(() => {
-            navigate("/");
+            navigate("/login");
           }, 3000);
         }
       })
@@ -70,15 +62,6 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="Password input">
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
 
           <div>
             <button
@@ -91,25 +74,8 @@ function Login() {
                   <ScaleLoader color="white" height={15} />
                 </div>
               )}
-              {!loading && <span>Login</span>}
+              {!loading && <span>reset password</span>}
             </button>
-          </div>
-
-          <div>
-            <button className="Google-button">
-              <div className="flex">
-                <img className="google" src={google} alt="" /> Continue with
-                Google
-              </div>
-            </button>
-          </div>
-          <div>
-            <p className="Login-Title">
-              Don't have an account ?
-              <Link style={{ color: "#3A54AA" }} to="/Signup">
-                Signup
-              </Link>
-            </p>
           </div>
         </div>
       </div>
@@ -117,4 +83,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ResetPassword;

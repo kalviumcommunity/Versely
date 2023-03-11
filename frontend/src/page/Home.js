@@ -12,36 +12,35 @@ function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_API + "/api/alllyric", {
+    setLoading(true);
+    fetch(process.env.REACT_APP_API + "api/alllyric", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.posts[0]._id);
         setData(result.posts);
+        setLoading(false);
       });
   }, []);
 
-  // setLoading(false);
-
-  if (loading) {
-    return (
-      <div
-        className="loader"
-        style={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ScaleLoader color="#3A54AA" size={150} />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div
+  //       className="loader"
+  //       style={{
+  //         width: "100%",
+  //         height: "100vh",
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //       }}
+  //     >
+  //       <ScaleLoader color="#3A54AA" size={150} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
@@ -86,21 +85,39 @@ function Home() {
       </div>
       <div className="Box3">
         <h2>Explore Song Lyrics</h2>
-        <div className="songdiv">
-          {data.slice(0, 4).map((item) => {
-            return (
-              <Link className="text-link" to={`/song/${item._id}`}>
-                <div className="songcard" key={item._id}>
-                  <img src={item.image} alt="" />
-                  <div>
-                    <h3>{item.SongName}</h3>
-                    <p>{item.Artist}</p>
+        {!loading && (
+          <div className="songdiv">
+            {data.slice(0, 4).map((item) => {
+              return (
+                <Link className="text-link" to={`/song/${item._id}`}>
+                  <div className="songcard" key={item._id}>
+                    <img src={item.image} alt="" />
+                    <div>
+                      <h3>{item.SongName}</h3>
+                      <p>{item.Artist}</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+        {loading && (
+          <div className="songdiv">
+            <div
+              className="loader"
+              style={{
+                width: "100%",
+                height: "40vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <ScaleLoader color="#3A54AA" size={150} />
+            </div>
+          </div>
+        )}
         <button className="explorebutton">
           <Link className="linkbutton" to="/explore">
             Explore more..

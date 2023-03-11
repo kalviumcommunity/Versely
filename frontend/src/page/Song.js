@@ -12,7 +12,7 @@ function Song() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        process.env.REACT_APP_API + `/api/lyric/${id}`
+        process.env.REACT_APP_API + `api/lyric/${id}`
       );
       const json = await response.json();
       setLyrics(json);

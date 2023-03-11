@@ -9,7 +9,7 @@ const cors = require("cors");
 mongoose.set("strictQuery", false);
 //express app
 const app = express();
-app.use(cors("http://localhost:3000", "https://versely-static.onrender.com"));
+app.use(cors());
 
 // middleware
 app.use(express.json());
