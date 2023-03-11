@@ -13,7 +13,7 @@ function ResetPassword() {
 
   const PostData = () => {
     setLoading(true);
-    fetch(process.env.REACT_APP_API + "/api/user/reset-password", {
+    fetch(process.env.REACT_APP_API + "api/user/reset-password", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
