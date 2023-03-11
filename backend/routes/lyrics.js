@@ -54,7 +54,7 @@ router.get("/lyric/:id", (req, res) => {
   Lyric.findOne({ _id: req.params.id })
     .populate("postedBy", "_id name")
     .then((lyric) => {
-      res.json({ lyric });
+      return res.json({ lyric });
       console.log(req.user._id);
     })
     .catch((err) => {

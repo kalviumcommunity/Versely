@@ -19,7 +19,7 @@ function Song() {
       setLoading(false);
     };
     fetchData();
-  }, [id, lyrics]);
+  }, []);
 
   return (
     <>
