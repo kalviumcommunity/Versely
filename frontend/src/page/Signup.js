@@ -15,6 +15,15 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const showPassword = () => {
+    let x = document.getElementById("showpassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  };
+
   const emailREGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const passwordREGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
   const PostData = () => {
@@ -100,8 +109,17 @@ function Signup() {
               type="password"
               placeholder="Password"
               value={password}
+              id="showpassword"
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              onClick={showPassword}
+              style={{ marginLeft: "2vh" }}
+            />
+            Show Password
           </div>
           <div>
             <button

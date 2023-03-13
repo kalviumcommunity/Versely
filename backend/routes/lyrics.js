@@ -62,15 +62,4 @@ router.get("/lyric/:id", (req, res) => {
     });
 });
 
-router.post("/search-lyric", (req, res) => {
-  let lyricPattern = new RegExp("^" + req.body.query);
-  Lyric.find({ SongName: { $regex: lyricPattern } })
-    .then((lyric) => {
-      res.json({ lyric });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
 module.exports = router;

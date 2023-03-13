@@ -15,6 +15,15 @@ function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const showPassword = () => {
+    let x = document.getElementById("showpassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  };
+
   const PostData = () => {
     setLoading(true);
     fetch(process.env.REACT_APP_API + "api/user/signin", {
@@ -76,8 +85,17 @@ function Login() {
               type="password"
               placeholder="Password"
               value={password}
+              id="showpassword"
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              onClick={showPassword}
+              style={{ marginLeft: "2vh" }}
+            />
+            Show Password
           </div>
 
           <div>
