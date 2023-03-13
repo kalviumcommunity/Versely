@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
+import "react-toastify/dist/ReactToastify.css";
 
 function Contribute() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
   const [SongName, setSongName] = useState("");
   const [Artist, setArtist] = useState("");
   const [lyrics, setlyrics] = useState("");
@@ -16,6 +16,7 @@ function Contribute() {
   const [url, setUrl] = useState("");
 
   const postDetails = () => {
+    setLoading(true);
     const data = new FormData();
     data.append("file", url);
     data.append("upload_preset", "Versely");
@@ -30,9 +31,12 @@ function Contribute() {
       })
       .catch((err) => {
         console.log(err);
+        setError(data.error);
+        setLoading(false);
       });
-
-    fetch("/api/createlyric", {
+  };
+  useEffect(() => {
+    fetch(process.env.REACT_APP_API + "api/createlyric", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -51,37 +55,13 @@ function Contribute() {
         if (data.error) {
           setError(data.error);
         } else {
-          setMessage(data.message);
-          window.alert("Lyric created successfully,Thankyou for contributing");
-          setLoading(true);
           navigate("/explore");
         }
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  if (loading) {
-    return (
-      <div>
-        <Navbar />
-        <div
-          className="loader"
-          style={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <ScaleLoader color="#3A54AA" size={150} />
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+  }, [url]);
 
   return (
     <div>
@@ -90,7 +70,7 @@ function Contribute() {
         <h1>Add a Song Lyric</h1>
         <div className="Form-div">
           <div className="Input-text-area">
-            <label>Song Name</label>
+            <label>*Song Name</label>
             <input
               type="text"
               placeholder=" Song Name"
@@ -100,7 +80,7 @@ function Contribute() {
           </div>
           <br />
           <div className="Input-text-area">
-            <label>Artist</label>
+            <label>*Artist</label>
             <input
               type="text"
               placeholder=" Artist's Name"
@@ -110,7 +90,7 @@ function Contribute() {
           </div>
           <div className="contributeflex">
             <div className="Songtextarea">
-              <label>Song lyrics</label>
+              <label>*Song lyrics</label>
               <textarea
                 className="ContributeTextArea"
                 rows="12"
@@ -149,11 +129,35 @@ function Contribute() {
           accept="image/png, image/jpg, image/gif, image/jpeg"
           onChange={(e) => setUrl(e.target.files[0])}
         />
-        <button className="contributebutton" onClick={() => postDetails()}>
-          Submit
-        </button>
-        {error && <p className="error"> {error} </p>}
-        {message && <p className="message"> {message} </p>}
+        {loading && (
+          <div>
+            <ScaleLoader
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginBottom: "5vh",
+              }}
+              color="#3a54aa"
+              height={15}
+            />
+          </div>
+        )}
+        {!loading && (
+          <div>
+            <button className="contributebutton" onClick={postDetails}>
+              Submit
+            </button>
+          </div>
+        )}
+        {error && (
+          <div
+            style={{ textAlign: "center", color: "red", marginBottom: "5vh" }}
+          >
+            *Please fill the required fields
+          </div>
+        )}
       </div>
       <Footer />
     </div>

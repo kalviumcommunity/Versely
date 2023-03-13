@@ -153,3 +153,80 @@ footer{
   font-size: 2.25vh;
   cursor: pointer;
 }
+/* ///////////////////////////////////////Form popup component/////////////////////////////////////////////////*/
+.Modal{
+  position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.FormPopup-container{
+  background-color: white;
+  width: min(90%,60vh);
+  border: 2px solid #3a54aa;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+}
+.FormPopup-container h3{
+  text-align: center;
+  color: #3a54aa;
+}
+.FormPopup-container h4{
+  text-align: center;
+  margin-top: 3vh;
+}
+.Formtextareadiv{
+  width: min(90%,40vh);
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.Formtextareadiv textarea{
+  border-radius: 5px;
+    border: 2px solid #3A54AA;
+}
+.Formpopup-container-input{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-submit-button{
+    display: flex;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      width: 30vh;
+      height: 5vh;
+      color: white;
+      background-color: #3A54AA;
+      border-radius: 20px;
+      box-shadow: 0 0 4px grey;
+      text-decoration: none;
+      border: none;
+      text-align: center;
+      align-items: center;
+      cursor: pointer;
+}
+.form-cancel-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  margin-bottom: 2vh;
+  font-size: 2vh;
+  border: none;
+  color: #3a54aa;
+  border-radius: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+}

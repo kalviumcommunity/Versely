@@ -18,7 +18,7 @@ router.get("/alllyric", requireAuth, (req, res) => {
 router.post("/createlyric", requireAuth, (req, res) => {
   const { SongName, Artist, lyrics, aboutLyrics, image } = req.body;
   if (!SongName || !Artist || !lyrics) {
-    res.status(422).json({ error: "please add all the fields" });
+    return res.status(422).json({ error: "please add all the fields" });
   }
   req.user.password = undefined;
   const post = new Lyric({
@@ -32,7 +32,7 @@ router.post("/createlyric", requireAuth, (req, res) => {
   post
     .save()
     .then((result) => {
-      res.json({ post: result });
+      return res.json({ post: result });
     })
     .catch((err) => {
       console.log(err);
@@ -49,36 +49,17 @@ router.get("/mylyric", requireAuth, (req, res) => {
       console.log(err);
     });
 });
+
 router.get("/lyric/:id", (req, res) => {
   Lyric.findOne({ _id: req.params.id })
     .populate("postedBy", "_id name")
     .then((lyric) => {
-      res.json({ lyric });
+      return res.json({ lyric });
+      console.log(req.user._id);
     })
     .catch((err) => {
       return res.status(404).json({ error: "lyrics not found" });
     });
 });
-
-// router.put('/comment', requireAuth,(req,res)=>{
-//    const comment = {
-//     text: req.body.text,
-//     postedBy:req.user._id
-//    }
-//    Post.findByIdAndUpdate(req.body.postId,{
-//     $push:{comments:comment}
-//    },{
-//     new:true
-//    })
-//    .populate("comments.postedBy","_id name")
-//    .exec((err,result)=>{
-//     if(err){
-//         return res.status(422).json({error:err})
-//     }
-//     else{
-//         res.json(result)
-//     }
-//    })
-// })
 
 module.exports = router;

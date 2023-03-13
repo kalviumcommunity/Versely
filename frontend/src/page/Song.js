@@ -3,21 +3,37 @@ import { useParams } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
+import FormPopup from "../component/FormPopup";
 
 function Song() {
   const { id } = useParams();
   const [lyrics, setLyrics] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState(false);
+
+  const handleState = (e) => {
+    setModal(e);
+  };
+
+  const suggestImprovement = () => {
+    if (modal === false) {
+      setModal(true);
+    } else {
+      setModal(false);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/api/lyric/${id}`);
+      const response = await fetch(
+        process.env.REACT_APP_API + `api/lyric/${id}`
+      );
       const json = await response.json();
       setLyrics(json);
       setLoading(false);
     };
     fetchData();
-  }, [id, lyrics]);
+  }, []);
 
   return (
     <>
@@ -59,7 +75,10 @@ function Song() {
                   <div className="AboutSongBox">
                     <h3>About the Song</h3>
                     <p>{lyrics.lyric.aboutLyrics}</p>
-                    <button className="improvementbutton">
+                    <button
+                      className="improvementbutton"
+                      onClick={suggestImprovement}
+                    >
                       Suggest an improvement
                     </button>
                   </div>
@@ -67,6 +86,17 @@ function Song() {
                   <div></div>
                 )}
               </div>
+            </div>
+            <div>
+              {modal ? (
+                <FormPopup
+                  isOpen={modal}
+                  notOpen={handleState}
+                  lyrics={lyrics}
+                />
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
           <Footer />

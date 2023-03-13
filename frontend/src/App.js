@@ -4,14 +4,16 @@ import Explore from "./page/Explore";
 import Contribute from "./page/Contribute";
 import Login from "./page/Login";
 import Signup from "./page/Signup";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Song from "./page/Song";
+import ResetPassword from "./page/ResetPassword";
 import { reducer, initialState } from "./reducers/userReducer";
 
 export const UserContext = createContext();
 
 const Routing = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -20,7 +22,7 @@ const Routing = () => {
       dispatch({ type: "USER", payload: user });
       navigate("/");
     } else {
-      navigate("/login");
+      if (!location.pathname.startsWith("/reset")) navigate("/login");
     }
   }, []);
 
@@ -33,6 +35,7 @@ const Routing = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/song/:id" element={<Song />} />
+        <Route path="/reset" element={<ResetPassword />} />
       </Routes>
     </>
   );
