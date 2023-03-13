@@ -98,7 +98,7 @@ router.post("/reset-password", (req, res) => {
           .status(422)
           .json({ error: "User don't exist with that email" });
       }
-      user.resetToken = TouchEvent;
+      user.resetToken = token;
       user.expireToken = Date.now() + 3600000;
       user.save().then((result) => {
         transporter.sendMail({
