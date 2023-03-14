@@ -1,19 +1,19 @@
-import React, { useState, useContext } from "react";
-import { UserContext } from "../App";
-import { Link, useNavigate } from "react-router-dom";
-import loginpic3 from "../asset/loginpic3.png";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import loginpic from "../asset/loginpic.png";
 import logo from "../asset/logo.png";
 import google from "../asset/google.png";
+import { useNavigate, useParams } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Login() {
-  const { state, dispatch } = useContext(UserContext);
+function Newpassword() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const { token } = useParams();
+  console.log(token);
+  const [loading, setLoading] = useState(false);
 
   const showPassword = () => {
     let x = document.getElementById("showpassword");
@@ -24,45 +24,54 @@ function Login() {
     }
   };
 
+  const passwordREGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
   const PostData = () => {
     setLoading(true);
-    fetch(process.env.REACT_APP_API + "api/user/signin", {
+
+    if (!passwordREGEX.test(password)) {
+      setLoading(false);
+      toast.error(
+        "password should not be less than 6 characters and must contain atleast one number, one uppercase, one lowercase"
+      );
+      return;
+    }
+
+    fetch(process.env.REACT_APP_API + "api/user/new-password", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         password,
-        email,
+        token,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          toast.error(data.error);
           setLoading(false);
+          toast.error(`${data.error}`);
+          console.log(data.error);
         } else {
-          localStorage.setItem("jwt", data.token);
-          localStorage.setItem("user", JSON.stringify(data.user));
-          toast.success("Successfully Logged In");
-          dispatch({ type: "USER", payload: data.user });
+          toast.success(data.message);
           setLoading(false);
           setTimeout(() => {
-            navigate("/");
-          }, 3000);
+            navigate("/login");
+          }, 2000);
         }
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <div>
       <ToastContainer />
-      <div className="login-container">
-        <div className="loginvectordiv">
-          <img className="loginvector3" src={loginpic3} alt="img" />
-        </div>
+      <div className="reset-container">
+        {/* <div className="loginvectordiv">
+          <img className="loginvector" src={loginpic} alt="img" />
+        </div> */}
 
         <div className="Login-form">
           <div>
@@ -70,20 +79,12 @@ function Login() {
           </div>
           <br />
           <br />
-          <div className="Email input">
-            <label>Email Id</label>
-            <input
-              type="email"
-              placeholder="Email id"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+
           <div className="Password input">
             <label>Password</label>
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Enter new Password"
               value={password}
               id="showpassword"
               onChange={(e) => setPassword(e.target.value)}
@@ -97,7 +98,6 @@ function Login() {
             />
             Show Password
           </div>
-
           <div>
             <button
               className="Signup-button"
@@ -109,30 +109,14 @@ function Login() {
                   <ScaleLoader color="white" height={15} />
                 </div>
               )}
-              {!loading && <span>Login</span>}
+              {!loading && <span>Reset Password</span>}
             </button>
           </div>
           <div>
             <p className="Login-Title">
-              Forgot password?
-              <Link style={{ color: "#3A54AA" }} to="/reset">
-                reset
-              </Link>
-            </p>
-          </div>
-          <div>
-            <button className="Google-button">
-              <div className="flex">
-                <img className="google" src={google} alt="" /> Continue with
-                Google
-              </div>
-            </button>
-          </div>
-          <div>
-            <p className="Login-Title">
-              Don't have an account ?
-              <Link style={{ color: "#3A54AA" }} to="/Signup">
-                Signup
+              Already have an account{" "}
+              <Link style={{ color: "#3A54AA" }} to="/login">
+                Login
               </Link>
             </p>
           </div>
@@ -142,4 +126,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Newpassword;

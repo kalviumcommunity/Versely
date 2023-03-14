@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import loginpic3 from "../asset/loginpic3.png";
 import logo from "../asset/logo.png";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
@@ -28,7 +27,7 @@ function ResetPassword() {
           toast.error(data.error);
           setLoading(false);
         } else {
-          toast.success({ html: data.message });
+          toast.success("Please Check your Email to reset your password");
           setLoading(false);
           setTimeout(() => {
             navigate("/login");
@@ -42,11 +41,7 @@ function ResetPassword() {
   return (
     <div>
       <ToastContainer />
-      <div className="login-container">
-        <div className="loginvectordiv">
-          <img className="loginvector3" src={loginpic3} alt="img" />
-        </div>
-
+      <div className="reset-container">
         <div className="Login-form">
           <div>
             <img className="logo" src={logo} alt="logo" />

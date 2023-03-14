@@ -8,19 +8,20 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/userModel");
-// const User = mongoose.model("User");
 const requireAuth = require("../middleware/Auth");
 const JWT_SECRET = process.env.SECRET;
 const nodemailer = require("nodemailer");
-const sendgridTransport = require("nodemailer-sendgrid-transport");
 
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: process.env.API_KEY_EMAIL,
-    },
-  })
-);
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "pradumandumy12399@gmail.com",
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 router.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
@@ -44,12 +45,22 @@ router.post("/signup", (req, res) => {
         user
           .save()
           .then((user) => {
-            transporter.sendMail({
-              to: user.email,
-              from: "praduman03k@gmail.com",
-              subject: "Thankypu for signing up to Versely",
-              html: "<h1>Welcome to Versely</h1>",
-            });
+            transporter.sendMail(
+              {
+                to: user.email,
+                from: "pradumandumy12399@gmail.com",
+                subject: "Thankyou for signing up to Versely",
+                html: `<img src="http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png" alt="logo">
+                <h1>Welcome to Versely</h1>`,
+              },
+              function (error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log("Email sent:" + info.response);
+                }
+              }
+            );
             res.json({ message: "Saved successfully" });
           })
           .catch((err) => {
@@ -103,15 +114,43 @@ router.post("/reset-password", (req, res) => {
       user.save().then((result) => {
         transporter.sendMail({
           to: user.email,
-          from: "praduman03k@gmail.com",
+          from: "pradumandumy12399@gmail.com",
           subject: "password reset",
-          html: `<p>You requested for password reset
-          <h5>click on this <a href="http://localhost:3000/reset/${token}>link</a> to rest password</h5>`,
+          html: `<img src="http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png" alt="logo"/>
+          <h2>Reset Your Versely Account Password</h2>
+          <p>Hello ${user.email},</p><br/>
+          <p>We are sending you this email because you requested a password reset. Click on the <a href="http://localhost:3000/reset/${token}">link</a> to create a new password:</p>
+          <p>If you didn't request a password reset, you can ignore this email. Your password will not be changed.</p>
+          <p>Versely Team.</p>`,
         });
-        res.json({ message: "check your email for reset password" });
+        return res.json({ message: "check your email for reset password" });
       });
     });
   });
+});
+
+router.post("/new-password", (req, res) => {
+  const newPassword = req.body.password;
+  const sentToken = req.body.token;
+  User.findOne({ resetToken: sentToken, expireToken: { $gt: Date.now() } })
+    .then((user) => {
+      if (!user) {
+        return res
+          .status(422)
+          .json({ error: "Try again later, Session expired" });
+      }
+      bcrypt.hash(newPassword, 12).then((hashedpassword) => {
+        user.password = hashedpassword;
+        user.resetToken = undefined;
+        user.expireToken = undefined;
+        user.save().then((saveduser) => {
+          res.json({ message: "password updated successfully" });
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;

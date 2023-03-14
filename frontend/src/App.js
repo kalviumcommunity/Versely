@@ -7,6 +7,7 @@ import Signup from "./page/Signup";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Song from "./page/Song";
 import ResetPassword from "./page/ResetPassword";
+import Newpassword from "./page/Newpassword";
 import { reducer, initialState } from "./reducers/userReducer";
 
 export const UserContext = createContext();
@@ -35,7 +36,8 @@ const Routing = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/song/:id" element={<Song />} />
-        <Route path="/reset" element={<ResetPassword />} />
+        <Route exact path="/reset" element={<ResetPassword />} />
+        <Route path="/reset/:token" element={<Newpassword />} />
       </Routes>
     </>
   );
