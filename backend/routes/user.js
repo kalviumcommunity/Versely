@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const LogoImg =
+  "http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png";
 const User = require("../models/userModel");
 const requireAuth = require("../middleware/Auth");
 const JWT_SECRET = process.env.SECRET;
@@ -50,7 +51,7 @@ router.post("/signup", (req, res) => {
                 to: user.email,
                 from: "pradumandumy12399@gmail.com",
                 subject: "Thankyou for signing up to Versely",
-                html: `<img src="http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png" alt="logo">
+                html: `<img src=${LogoImg} alt="logo">
                 <h1>Welcome to Versely</h1>`,
               },
               function (error, info) {
@@ -116,10 +117,10 @@ router.post("/reset-password", (req, res) => {
           to: user.email,
           from: "pradumandumy12399@gmail.com",
           subject: "password reset",
-          html: `<img src="http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png" alt="logo"/>
+          html: `<img src=${LogoImg} alt="logo"/>
           <h2>Reset Your Versely Account Password</h2>
           <p>Hello ${user.email},</p><br/>
-          <p>We are sending you this email because you requested a password reset. Click on the <a href="http://localhost:3000/reset/${token}">link</a> to create a new password:</p>
+          <p>We are sending you this email because you requested a password reset. Click on the <a href="${process.env.REACT_APP_API}/reset/${token}">link</a> to create a new password:</p>
           <p>If you didn't request a password reset, you can ignore this email. Your password will not be changed.</p>
           <p>Versely Team.</p>`,
         });
