@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
-const Schema = mongoose.Schema;
 
 const lyricSchema = new mongoose.Schema({
   SongName: {
@@ -19,12 +18,6 @@ const lyricSchema = new mongoose.Schema({
     type: String,
     default: "no",
   },
-  comments: [
-    {
-      text: String,
-      postedBy: { type: ObjectId, ref: "User" },
-    },
-  ],
   image: {
     type: String,
     default: "https://discussions.apple.com/content/attachment/592590040",
