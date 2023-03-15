@@ -166,23 +166,25 @@ footer{
 }
 .FormPopup-container{
   background-color: white;
-  width: min(90%,60vh);
+  width: min(90%,70vh);
   border: 2px solid #3a54aa;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5vh;
 }
-.FormPopup-container h3{
+.FormPopup-container h2{
   text-align: center;
   color: #3a54aa;
+  margin-top: 2vh;
 }
-.FormPopup-container h4{
+/* .FormPopup-container h4{
   text-align: center;
   margin-top: 3vh;
-}
+} */
 .Formtextareadiv{
-  width: min(90%,40vh);
+  width: min(90%,50vh);
+  height: min(90%,40vh);
   margin-inline: auto;
   display: flex;
   justify-content: center;
@@ -197,6 +199,9 @@ footer{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.Formpopup-container-input input{
+margin: 2vh;
 }
 .form-submit-button{
     display: flex;

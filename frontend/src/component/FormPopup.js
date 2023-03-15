@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 import "react-toastify/dist/ReactToastify.css";
 import ScaleLoader from "react-spinners/ScaleLoader";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 function FormPopup({ isOpen, notOpen, lyrics }) {
   const [option1, setOption1] = useState(false);
@@ -21,6 +21,7 @@ function FormPopup({ isOpen, notOpen, lyrics }) {
     }
   };
   const submitSuggestion = () => {
+    setLoading(true);
     fetch(process.env.REACT_APP_API + "api/suggest", {
       method: "post",
       headers: {
@@ -39,10 +40,15 @@ function FormPopup({ isOpen, notOpen, lyrics }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
+          setLoading(false);
           setError(data.error);
+          toast.error(error);
         } else {
+          setLoading(false);
           toast.success("Thankyou for Contributing");
-          navigate("/explore");
+          setTimeout(() => {
+            navigate("/explore");
+          }, 2000);
         }
       })
       .catch((err) => {
@@ -52,65 +58,85 @@ function FormPopup({ isOpen, notOpen, lyrics }) {
 
   return (
     <div className="Modal">
+      <ToastContainer />
       <div className="FormPopup-container">
-        <h3>Help Us Improve</h3>
+        <h2>Help Us Improve</h2>
         <br />
-        <div className="Formpopup-container-input" style={{ padding: "2vh" }}>
-          {/* <p>
-            Mail us at praduman03k@gmail.com to give suggestion and provide us
-            with the Song name and what to improve.
-            <br />
-            Thank you.
-          </p> */}
+        <div className="Formpopup-container-input">
           <form>
-            <h2>Help us Improve</h2>
+            <label style={{ fontWeight: "600" }}>Select a reason:</label>
             <br />
-            <label>Select a reason:</label>
+            <div>
+              <input
+                type="radio"
+                name="option"
+                id="option1"
+                value={option1}
+                onChange={(e) => setOption1(true)}
+              />
+              <label htmlFor="option1">improve the lyrics</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="option"
+                id="option2"
+                value={option2}
+                onChange={(e) => setOption2(true)}
+              />
+              <label htmlFor="option2">improve about song</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="option"
+                id="option3"
+                value={option3}
+                onChange={(e) => setOption3(true)}
+              />
+              <label htmlFor="option3">add something else</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="option"
+                id="option4"
+                value={option4}
+                onChange={(e) => setOption4(true)}
+              />
+              <label htmlFor="option4">other</label>
+            </div>
             <br />
-            <input
-              type="radio"
-              name="option"
-              id="option1"
-              value={option1}
-              onChange={(e) => setOption1(e.target.value)}
-            />
-            <label htmlFor="option1">improve the lyrics</label>
-            <input
-              type="radio"
-              name="option"
-              id="option2"
-              value={option2}
-              onChange={(e) => setOption2(e.target.value)}
-            />
-            <label htmlFor="option2">improve about song</label>
-            <input
-              type="radio"
-              name="option"
-              id="option3"
-              value={option3}
-              onChange={(e) => setOption3(e.target.value)}
-            />
-            <label htmlFor="option3">add something else</label>
-            <input
-              type="radio"
-              name="option"
-              id="option4"
-              value={option4}
-              onChange={(e) => setOption4(e.target.value)}
-            />
-            <label htmlFor="option4">other</label>
-            <br />
-            <label>Suggest an Improvement here..</label>
-            <textarea
-              cols="30"
-              rows="10"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            ></textarea>
+            <div className="Formtextareadiv">
+              <label style={{ fontWeight: "600" }}>
+                Suggest an Improvement here..
+              </label>
+              <textarea
+                cols="50"
+                rows="10"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              ></textarea>
+            </div>
           </form>
         </div>
-        <button onClick={submitSuggestion}>Submit</button>
-        {error && <div>{error}</div>}
+        {/* <button className="form-submit-button" onClick={submitSuggestion}>
+          Submit
+        </button> */}
+        <div>
+          <button
+            className="form-submit-button"
+            onClick={submitSuggestion}
+            disabled={loading}
+          >
+            {loading && (
+              <div>
+                <ScaleLoader color="white" height={15} />
+              </div>
+            )}
+            {!loading && <span>Submit</span>}
+          </button>
+        </div>
         <button className="form-cancel-button" onClick={modalfunction}>
           Close
         </button>

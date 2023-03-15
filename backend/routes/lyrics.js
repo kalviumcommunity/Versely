@@ -100,13 +100,13 @@ router.post("/suggest", requireAuth, (req, res) => {
         subject: "Song improve Suggestion",
         html: `<img src="http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png" alt="logo"/>
           <h2>Someone Suggested a Improvement in a Song Lyric</h2>
-          <p>${suggest.SongName}</p>
-          <p>${suggest.option1}</p>
-          <p>${suggest.option2}</p>
-          <p>${suggest.option3}</p>
-          <p>${suggest.option4}</p>
-          <p>${suggest.content}</p>
-          <p>${suggest.postedBy}</p>`,
+          <p>Song Name:${suggest.SongName}</p>
+          <p>improve about song: ${suggest.option1}</p>
+          <p>improve about song: ${suggest.option2}</p>
+          <p>add something else: ${suggest.option3}</p>
+          <p>other: ${suggest.option4}</p>
+          <p>Suggest an Improvement:<br/> ${suggest.content}</p>
+          <p>Submitted by: ${suggest.postedBy.name},${suggest.postedBy.email}</p>`,
       });
       return res.json({ suggest: result });
     })
