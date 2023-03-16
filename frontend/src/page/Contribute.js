@@ -14,6 +14,8 @@ function Contribute() {
   const [lyrics, setlyrics] = useState("");
   const [about, setAbout] = useState("");
   const [url, setUrl] = useState("");
+  const [language, setLanguage] = useState("");
+  const [LangLyrics, setLangLyrics] = useState("");
 
   const postDetails = () => {
     setLoading(true);
@@ -46,6 +48,8 @@ function Contribute() {
         SongName,
         Artist,
         lyrics,
+        language,
+        LangLyrics,
         aboutLyrics: about,
         image: url,
       }),
@@ -101,7 +105,7 @@ function Contribute() {
               />
             </div>
             <div className="Abouttextarea">
-              <label>About Song and Explanation</label>
+              <label>About Song and Explanation(optional)</label>
               <textarea
                 className="ContributeTextArea"
                 rows="12"
@@ -110,6 +114,28 @@ function Contribute() {
                 value={about}
                 onChange={(e) => setAbout(e.target.value)}
               />
+            </div>
+          </div>
+          <div>
+            <div className="Input-text-area">
+              <label>Lyrics in other language(optional)</label>
+              <input
+                type="text"
+                placeholder="Enter Language"
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+              />
+            </div>
+            <div className="Songtextarea">
+              <label>Lyrics in other language(optional) </label>
+              <textarea
+                className="ContributeTextArea"
+                rows="12"
+                cols="60"
+                placeholder="Lyrics in other language"
+                value={LangLyrics}
+                onChange={(e) => setLangLyrics(e.target.value)}
+              ></textarea>
             </div>
           </div>
         </div>
@@ -121,7 +147,7 @@ function Contribute() {
             marginRight: "2vh",
           }}
         >
-          Upload Song Image
+          Upload Song Image(optional)
         </label>
         <input
           className="contributeimagebutton"

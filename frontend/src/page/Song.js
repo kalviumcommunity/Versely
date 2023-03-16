@@ -10,6 +10,7 @@ function Song() {
   const [lyrics, setLyrics] = useState(null);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
+  const [language, setLanguage] = useState("English");
 
   const handleState = (e) => {
     setModal(e);
@@ -64,11 +65,30 @@ function Song() {
                 <h1>{lyrics.lyric.SongName}</h1>
                 <h3>{lyrics.lyric.Artist}</h3>
                 <p>posted by: {lyrics.lyric.postedBy.name}</p>
+                {lyrics.lyric.language ? (
+                  <div>
+                    <p>Available language:</p>
+                    <select
+                      value={language}
+                      onChange={(e) => setLanguage(e.target.value)}
+                    >
+                      <option>English</option>
+                      <option>{lyrics.lyric.language}</option>
+                    </select>
+                  </div>
+                ) : null}
               </article>
             </div>
             <div className="Song-lyrics-div">
-              <div>
+              {/* <div>
                 <p>{lyrics.lyric.lyrics}</p>
+              </div> */}
+              <div>
+                {language === "English" ? (
+                  <p>{lyrics.lyric.lyrics}</p>
+                ) : (
+                  <p>{lyrics.lyric.LangLyrics}</p>
+                )}
               </div>
               <div>
                 {lyrics.lyric.aboutLyrics ? (

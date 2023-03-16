@@ -314,6 +314,7 @@ margin-inline: auto;
   flex-direction: column;
 }
 .Form-div input{
+  padding-left: 0.3vh;
   border-radius: 5px;
   border: 2px solid #3A54AA;
   height: 5vh;
