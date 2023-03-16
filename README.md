@@ -1,9 +1,11 @@
 # Versely
 
-ReactJS App initialised- https://github.com/kalviumcommunity/Versely/pull/2
+Website Link: https://versely.pages.dev/
 
-Created Backened Folder and implemented Mongoose, NPM, Schema, Models, ExpressJS- https://github.com/kalviumcommunity/Versely/pull/3
+Versely is an innovative open-source MERN website that is designed to provide music enthusiasts with a platform to explore, contribute, and upload lyrics of their favorite songs. With its user-friendly interface, Versely makes it easy for users to access song lyrics, and other interesting song facts.
 
-Inititalised User Schema and created Autentication using bcrypt package - https://github.com/kalviumcommunity/Versely/pull/4
+One of the unique features of Versely is its ability to allow users to add their own hidden meanings and facts of the lyrics/song. This feature enables users to share their own interpretations and insights, which can further enrich the user experience.
 
-Implemented Login page, Signup page, Home page, Contribute Form page, also connected backened to the client page and added validation in login and signup page.- https://github.com/kalviumcommunity/Versely/pull/6
+In addition, Versely also allows users to add translations of the songs in different languages. This feature makes it easy for users to explore and appreciate music from different cultures and regions of the world.
+
+Overall, Versely is an exciting and user-friendly platform that provides music lovers with a fun and engaging way to explore, contribute and share their passion for music. Whether you are a seasoned music enthusiast or just starting out, Versely is the perfect platform to connect with other music lovers, explore new songs, and discover the hidden meanings and facts behind your favorite tracks.
