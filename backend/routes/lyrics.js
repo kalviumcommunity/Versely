@@ -30,15 +30,18 @@ router.get("/alllyric", requireAuth, (req, res) => {
 });
 
 router.post("/createlyric", requireAuth, (req, res) => {
-  const { SongName, Artist, lyrics, aboutLyrics, image } = req.body;
+  const { SongName, Artist, lyrics, language, LangLyrics, aboutLyrics, image } =
+    req.body;
   if (!SongName || !Artist || !lyrics) {
-    return res.status(422).json({ error: "please add all the fields" });
+    return res.status(422).json({ error: "please add required fields" });
   }
   req.user.password = undefined;
   const post = new Lyric({
     SongName,
     Artist,
     lyrics,
+    language,
+    LangLyrics,
     aboutLyrics,
     image,
     postedBy: req.user,

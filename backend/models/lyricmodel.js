@@ -14,6 +14,13 @@ const lyricSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  language: {
+    type: String,
+  },
+  LangLyrics: {
+    type: String,
+    default: "Not Available",
+  },
   aboutLyrics: {
     type: String,
     default: "no",
