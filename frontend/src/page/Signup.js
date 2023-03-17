@@ -136,7 +136,11 @@ function Signup() {
             </button>
           </div>
           <div>
-            <button className="Google-button">
+            <button 
+            onClick={()=>{
+              navigate('/googleauth')
+            }}
+            className="Google-button">
               <div className="flex">
                 <img className="google" src={google} alt="" /> Continue with
                 Google

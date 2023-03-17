@@ -15,6 +15,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  
+
   const showPassword = () => {
     let x = document.getElementById("showpassword");
     if (x.type === "password") {
@@ -121,9 +123,11 @@ function Login() {
             </p>
           </div>
           <div>
-            <button className="Google-button">
+            <button onClick={()=>{
+                  navigate('/googleauth')
+                }} className="Google-button">
               <div className="flex">
-                <img className="google" src={google} alt="" /> Continue with
+                <img  className="google" src={google} alt="" /> Continue with
                 Google
               </div>
             </button>
