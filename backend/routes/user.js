@@ -121,7 +121,7 @@ router.post("/reset-password", (req, res) => {
           html: `<img src=${LogoImg} alt="logo"/>
           <h2>Reset Your Versely Account Password</h2>
           <p>Hello ${user.email},</p><br/>
-          <p>We are sending you this email because you requested a password reset. Click on the <a href="${process.env.REACT_APP_API}/reset/${token}">link</a> to create a new password:</p>
+          <p>We are sending you this email because you requested a password reset. Click on the <a href="${process.env.REACT_CLIENT_API}/reset/${token}">link</a> to create a new password:</p>
           <p>If you didn't request a password reset, you can ignore this email. Your password will not be changed.</p>
           <p>Versely Team.</p>`,
         });

@@ -504,3 +504,15 @@ margin-inline: auto;
       width: 100%;
       height: 100vh;
 }
+
+/* //////////////////////////////////////////////////////////Profile Page//////////////////////////////////////////////////// */
+
+.profilepage{
+  text-align: center;
+}
+
+.profilepage h1 {
+  color: #3A54AA;
+  margin-top: 5vh;
+  margin-bottom: 3vh;
+}

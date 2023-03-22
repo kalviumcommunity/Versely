@@ -7,7 +7,7 @@ import Footer from "../component/Footer";
 function Explore() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [List, setList] = useState(data);
+  const [List, setList] = useState("");
 
   useEffect(() => {
     fetch(process.env.REACT_APP_API + "api/alllyric", {
@@ -17,14 +17,13 @@ function Explore() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.posts[0]._id);
         setData(result.posts);
         setLoading(false);
       });
   }, []);
 
   const letdata = Object.values(data);
-  const search_parameters = Object.keys(Object.assign({}, ...letdata));
+  const search_parameters = ["SongName", "Artist"];
 
   function search(data) {
     return data.filter((item) =>

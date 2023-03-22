@@ -10,6 +10,7 @@ import Song from "./page/Song";
 import ResetPassword from "./page/ResetPassword";
 import Newpassword from "./page/Newpassword";
 import { reducer, initialState } from "./reducers/userReducer";
+import User from "./page/User";
 
 export const UserContext = createContext();
 
@@ -37,9 +38,10 @@ const Routing = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/song/:id" element={<Song />} />
-        <Route path="/googleauth" element={<GoogleAuth/>}/>
+        <Route path="/googleauth" element={<GoogleAuth />} />
         <Route exact path="/reset" element={<ResetPassword />} />
         <Route path="/reset/:token" element={<Newpassword />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </>
   );

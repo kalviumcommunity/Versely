@@ -58,7 +58,7 @@ router.post("/createlyric", requireAuth, (req, res) => {
 
 router.get("/mylyric", requireAuth, (req, res) => {
   Lyric.find({ postedBy: req.user.id })
-    .populate("postedBy", "_id name")
+    .populate("postedBy", "_id name email")
     .then((mylyric) => {
       res.json({ mylyric });
     })
