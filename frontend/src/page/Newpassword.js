@@ -62,6 +62,7 @@ function Newpassword() {
         console.log(err);
       });
   };
+  console.log("new password");
 
   return (
     <div>

@@ -38,6 +38,7 @@ function ResetPassword() {
         console.log(err);
       });
   };
+  console.log("reset password");
   return (
     <div>
       <ToastContainer />

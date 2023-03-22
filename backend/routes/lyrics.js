@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.get("/alllyric", requireAuth, (req, res) => {
+router.get("/alllyric", (req, res) => {
   Lyric.find()
     .populate("postedBy", "_id name")
     .then((posts) => {
