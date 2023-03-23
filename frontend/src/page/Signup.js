@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GoogleAuth from "./GoogleAuth";
 
 function Signup() {
   const navigate = useNavigate();
@@ -113,13 +114,13 @@ function Signup() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div>
+          <div style={{ fontSize: "2.2vh" }}>
             <input
               type="checkbox"
               onClick={showPassword}
               style={{ marginLeft: "2vh" }}
             />
-            Show Password
+            &nbsp;Show Password
           </div>
           <div>
             <button
@@ -136,16 +137,9 @@ function Signup() {
             </button>
           </div>
           <div>
-            <button 
-            onClick={()=>{
-              navigate('/googleauth')
-            }}
-            className="Google-button">
-              <div className="flex">
-                <img className="google" src={google} alt="" /> Continue with
-                Google
-              </div>
-            </button>
+            <div>
+              <GoogleAuth />
+            </div>
           </div>
           <div>
             <p className="Login-Title">

@@ -376,6 +376,9 @@ margin-inline: auto;
   margin-left: auto;
   width: 45vh;
 }
+.Form label{
+  margin-bottom: 1vh;
+}
 @media only screen and (max-width: 850px){
   .contributeflex{
     display: flex;
@@ -519,4 +522,88 @@ margin-inline: auto;
 
 .Song-container{
   margin-bottom: 10vh;
+}
+
+
+
+/* /////////////////////////////////////////////////////Terms and condition ////////////////////////////////////////////// */
+
+.terms-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 7vh;
+  width: min(90%,70%);
+  margin-inline: auto;
+}
+.terms-container h1{
+  color: #3A54AA;
+  text-align: center;
+  margin: 5vh;
+}
+.terms-container li{
+  padding: 2vh;
+}
+.terms-container ul li:before {
+  /* the custom styled bullets */
+  background-color: #3a54aa;
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 2px;
+  height: 10px;
+  width: 10px;
+}
+
+
+/* ////////////////////////////////////////////////About us///////////////////////////////////////////////////////////////////// */
+
+.aboutus-container{
+  width: min(90%,110vh);
+  margin-inline: auto;
+  /* padding: 10vh; */
+}
+  
+.aboutus-container h1 {
+    color: #3A54AA;
+  	font-size: 2.5em;
+  	margin-top: 1em;
+  	margin-bottom: 0.5em;
+  	text-align: center;
+  	}
+  
+.aboutus-container li{
+  padding: 2vh;
+}
+  
+.backtohome a {
+  color: #3a54aa;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  display: flex;
+  justify-content: center;
+}
+  
+.aboutus-container a:hover {
+  text-decoration: underline;
+}
+
+.logo2img{
+  width: 40vh;
+  margin-top: 6vh;
+  margin-bottom: 4vh;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+/* -------------------------------------------------------Google button-------------------------------------------- */
+@media only screen and (max-width:600px){
+  #signindiv{
+    width: 30vh;
+  margin-left: 4vh;
+  }
 }

@@ -16,12 +16,12 @@ body {
   align-items: center;
   height: 100%;
 }
-
 .navbar {
-  /* width: min(90%); */
+  position: sticky;
+  top: 0;
+  z-index: 1;
   height: 60px;
   background-color: white;
-  position: relative;
 }
 
 .logonav{
@@ -111,27 +111,116 @@ body {
     margin-top: 22px;
   }
 }
-/* ----------------Footes CSS---------- */
-/* .footer-div{
-  margin: 5vh;
+/* -----------------------------------------Footes CSS----------------------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 10px 0;
+  /* min-height: 100vh;*/
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-area {
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+}
+
+.contact-content p {
+  font-size: 15px;
+  margin: 30px 0 60px;
+  position: relative;
+}
+
+.contact-content p::after {
+  background: white;
+  bottom: -30px;
+  content: "";
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%);
+  width: 80%;
+}
+
+.contact-content h6 {
+  color: white;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.contact-content span {
+  color: white;
+  margin: 0 10px;
+}
+
+.contact-social {
+  margin-top: 15px;
+}
+
+.contact-social>ul {
+  display: inline-flex;
+}
+
+.contact-social ul li a {
+  color: white;
+  display: inline-block;
+  height: 40px;
+  margin: 0 15px;
+  padding-top: 7px;
+  width: 50px;
+}
+/* 
+.contact-social ul li a:hover {
+  border: 1px solid #FAB702;
+  color: #FAB702;
 } */
-footer{
+
+.contact-content img {
+  max-width: 210px;
+}
+
+section,
+footer {
+  background: #3A54AA;
+  color: white;
+}
+
+footer p {
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer img {
+  width: 44px;
+}
+/* footer{
   background-color: hsl(0, 0%, 96%);
   border-top: 0.5px solid black;
 }
 .footer{
   display: flex;
   flex-wrap: wrap;
-  /* margin: 2vh; */
+
   justify-content: space-between;
   align-items: center;
 }
 .footer-logo{
   width: 30vh;
 }
-/* .footer-link-div{
-  margin: 6vh;
-} */
+
 .footer-link{
   width: 7vh;
   margin: 1vh;
@@ -152,7 +241,7 @@ footer{
   background-color: white;
   font-size: 2.25vh;
   cursor: pointer;
-}
+} */
 /* ///////////////////////////////////////Form popup component/////////////////////////////////////////////////*/
 .Modal{
   position: fixed;

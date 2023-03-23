@@ -94,7 +94,7 @@ function Contribute() {
           </div>
           <div className="contributeflex">
             <div className="Songtextarea">
-              <label>*Song lyrics</label>
+              <label style={{ marginBottom: "1vh" }}>*Song lyrics</label>
               <textarea
                 className="ContributeTextArea"
                 rows="12"
@@ -105,7 +105,9 @@ function Contribute() {
               />
             </div>
             <div className="Abouttextarea">
-              <label>About Song and Explanation(optional)</label>
+              <label style={{ marginBottom: "1vh" }}>
+                About Song and Explanation(optional)
+              </label>
               <textarea
                 className="ContributeTextArea"
                 rows="12"
@@ -118,7 +120,9 @@ function Contribute() {
           </div>
           <div>
             <div className="Input-text-area">
-              <label>Lyrics in other language(optional)</label>
+              <label style={{ marginBottom: "1vh" }}>
+                Lyrics in other language(optional)
+              </label>
               <input
                 type="text"
                 placeholder="Enter Language"
@@ -127,7 +131,9 @@ function Contribute() {
               />
             </div>
             <div className="Songtextarea">
-              <label>Lyrics in other language(optional) </label>
+              <label style={{ marginBottom: "1vh" }}>
+                Lyrics in other language(optional){" "}
+              </label>
               <textarea
                 className="ContributeTextArea"
                 rows="12"
