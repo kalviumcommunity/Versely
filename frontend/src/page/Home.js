@@ -25,23 +25,6 @@ function Home() {
       });
   }, []);
 
-  // if (loading) {
-  //   return (
-  //     <div
-  //       className="loader"
-  //       style={{
-  //         width: "100%",
-  //         height: "100vh",
-  //         display: "flex",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //       }}
-  //     >
-  //       <ScaleLoader color="#3A54AA" size={150} />
-  //     </div>
-  //   );
-  // }
-
   return (
     <div>
       <Navbar />

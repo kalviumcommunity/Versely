@@ -3,10 +3,10 @@ import { UserContext } from "../App";
 import { Link, useNavigate } from "react-router-dom";
 import loginpic3 from "../asset/loginpic3.png";
 import logo from "../asset/logo.png";
-import google from "../asset/google.png";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GoogleAuth from "./GoogleAuth";
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
@@ -89,13 +89,13 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div>
+          <div style={{ fontSize: "2.2vh" }}>
             <input
               type="checkbox"
               onClick={showPassword}
               style={{ marginLeft: "2vh" }}
             />
-            Show Password
+            &nbsp;Show Password
           </div>
 
           <div>
@@ -114,23 +114,20 @@ function Login() {
           </div>
           <div>
             <p className="Login-Title">
-              Forgot password?
+              Forgot password?&nbsp;&nbsp;
               <Link style={{ color: "#3A54AA" }} to="/reset">
                 reset
               </Link>
             </p>
           </div>
           <div>
-            <button className="Google-button">
-              <div className="flex">
-                <img className="google" src={google} alt="" /> Continue with
-                Google
-              </div>
-            </button>
+            <div>
+              <GoogleAuth />
+            </div>
           </div>
           <div>
             <p className="Login-Title">
-              Don't have an account ?
+              Don't have an account ?&nbsp;&nbsp;
               <Link style={{ color: "#3A54AA" }} to="/Signup">
                 Signup
               </Link>

@@ -80,9 +80,6 @@ function Song() {
               </article>
             </div>
             <div className="Song-lyrics-div">
-              {/* <div>
-                <p>{lyrics.lyric.lyrics}</p>
-              </div> */}
               <div>
                 {language === "English" ? (
                   <p>{lyrics.lyric.lyrics}</p>

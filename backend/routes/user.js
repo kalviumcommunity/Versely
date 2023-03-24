@@ -12,7 +12,8 @@ const User = require("../models/userModel");
 const requireAuth = require("../middleware/Auth");
 const JWT_SECRET = process.env.SECRET;
 const nodemailer = require("nodemailer");
-
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.gmail.com",
@@ -120,7 +121,7 @@ router.post("/reset-password", (req, res) => {
           html: `<img src=${LogoImg} alt="logo"/>
           <h2>Reset Your Versely Account Password</h2>
           <p>Hello ${user.email},</p><br/>
-          <p>We are sending you this email because you requested a password reset. Click on the <a href="${process.env.REACT_APP_API}/reset/${token}">link</a> to create a new password:</p>
+          <p>We are sending you this email because you requested a password reset. Click on the <a href="${process.env.REACT_CLIENT_API}/reset/${token}">link</a> to create a new password:</p>
           <p>If you didn't request a password reset, you can ignore this email. Your password will not be changed.</p>
           <p>Versely Team.</p>`,
         });
@@ -154,4 +155,44 @@ router.post("/new-password", (req, res) => {
     });
 });
 
+async function verifyToken(token) {
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: process.env.GOOGLE_CLIENT_ID,
+  });
+  const payload = ticket.getPayload();
+  const user = { email: payload.email, name: payload.name };
+  return user;
+}
+
+router.post("/auth/googleauth", async (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+    res.status(402).json({ error: "Unexpected error occured" });
+  }
+  const user = await verifyToken(token);
+
+  const userexist = await User.findOne({ email: user.email });
+
+  if (userexist) {
+    const { _id, name, email } = userexist;
+    const jwtoken = jwt.sign({ _id: userexist._id }, JWT_SECRET);
+    res.json({ jwtoken, user: { _id, name, email } });
+  } else {
+    const newuser = await new User({
+      email: user.email,
+      password: "",
+      name: user.name,
+      isGoogleUser: true,
+    });
+    await newuser.save();
+
+    const googleuser = await User.findOne({ email: user.email });
+    console.log(user);
+    const { _id, name, email } = googleuser;
+    const jwtoken = jwt.sign({ _id: googleuser._id }, JWT_SECRET);
+    res.json({ jwtoken, user: { _id, name, email } });
+  }
+});
 module.exports = router;

@@ -1,16 +1,20 @@
 import React, { useState, useContext } from "react";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { UserContext } from "../App";
 import "./navbar.css";
 import logo from "../asset/logo.png";
 import Hamburger from "../asset/hamburger.svg";
 
 function Navbar() {
-  const navigate = useNavigate();
   const [showNavbar, setShowNavbar] = useState(false);
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    dispatch({ type: "CLEAR" });
   };
 
   const { state, dispatch } = useContext(UserContext);
@@ -27,16 +31,12 @@ function Navbar() {
             <NavLink to="/contribute">Contribute</NavLink>
           </li>,
           <li>
-            <button
-              className="logout-button"
-              onClick={() => {
-                localStorage.clear();
-                dispatch({ type: "CLEAR" });
-                navigate("/login");
-              }}
-            >
+            <NavLink to="/user">My Profile</NavLink>
+          </li>,
+          <li>
+            <NavLink onClick={logout} to="/login">
               Logout
-            </button>
+            </NavLink>
           </li>,
         ]
       : [

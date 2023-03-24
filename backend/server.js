@@ -9,10 +9,10 @@ const cors = require("cors");
 mongoose.set("strictQuery", false);
 //express app
 const app = express();
-app.use(cors());
 
 // middleware
 app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();

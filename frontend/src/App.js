@@ -4,11 +4,15 @@ import Explore from "./page/Explore";
 import Contribute from "./page/Contribute";
 import Login from "./page/Login";
 import Signup from "./page/Signup";
+import GoogleAuth from "./page/GoogleAuth";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Song from "./page/Song";
 import ResetPassword from "./page/ResetPassword";
 import Newpassword from "./page/Newpassword";
 import { reducer, initialState } from "./reducers/userReducer";
+import User from "./page/User";
+import Terms from "./page/T&C";
+import Aboutus from "./page/Aboutus";
 
 export const UserContext = createContext();
 
@@ -36,8 +40,12 @@ const Routing = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/song/:id" element={<Song />} />
+        <Route path="/googleauth" element={<GoogleAuth />} />
         <Route exact path="/reset" element={<ResetPassword />} />
         <Route path="/reset/:token" element={<Newpassword />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/termsandcondition" element={<Terms />} />
+        <Route path="/aboutus" element={<Aboutus />} />
       </Routes>
     </>
   );

@@ -11,8 +11,12 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    
   },
+    isGoogleUser:{
+        type:Boolean,
+        default:false
+    },
   resetToken: String,
   expireToken: Date,
 });
