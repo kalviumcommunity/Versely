@@ -120,9 +120,6 @@ function FormPopup({ isOpen, notOpen, lyrics }) {
             </div>
           </form>
         </div>
-        {/* <button className="form-submit-button" onClick={submitSuggestion}>
-          Submit
-        </button> */}
         <div>
           <button
             className="form-submit-button"

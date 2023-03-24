@@ -158,7 +158,6 @@ function Contribute() {
         <input
           className="contributeimagebutton"
           type="file"
-          accept="image/png, image/jpg, image/gif, image/jpeg"
           onChange={(e) => setUrl(e.target.files[0])}
         />
         {loading && (

@@ -38,16 +38,6 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              {/* <div className="contact-social2">
-                <ul>
-                  <li>
-                    <Link to="/aboutus">About Us</Link>
-                  </li>
-                  <li>
-                    <Link to="/termsandcondition">Terms & Condition</Link>
-                  </li>
-                </ul>
-              </div> */}
               <div className="contact-social">
                 <ul>
                   <li>
@@ -73,7 +63,6 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              {/* </div> */}
             </div>
           </div>
         </div>
@@ -81,25 +70,6 @@ function Footer() {
       <footer>
         <p>Copyright &copy; 2023 VERSELY All Rights Reserved.</p>
       </footer>
-      {/* <footer>
-        <div classNameNameName="footer">
-          <div classNameName="footer-div">
-            <img classNameName="footer-logo" src={logo} alt="" />
-          </div>
-          <div classNameName="footer-link-div">
-            <a href="https://www.linkedin.com/in/praduman03/">
-              <img classNameName="footer-link" src={linkedin} alt="" />
-            </a>
-            <a href="https://github.com/praduman03">
-              <img classNameName="footer-link" src={github} alt="" />
-            </a>
-            <a href="https://wa.me/919680193899?text=Hello%2C%20I%20have%20a%20question%20about%20your%20website%20%22Versely%22%20can%20you%20please%20help%20me%3F">
-              <img classNameName="footer-link" src={whatsapp} alt="" />
-            </a>
-          </div>
-        </div>
-        <p classNameName="copyright">Versely &copy; 2023</p>
-      </footer> */}
     </div>
   );
 }

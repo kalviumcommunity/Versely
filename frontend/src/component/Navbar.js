@@ -8,17 +8,6 @@ import Hamburger from "../asset/hamburger.svg";
 function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
 
-  // const navbar = document.querySelector(".navbar");
-  // const top = navbar.offsetTop;
-  // function stickynavbar() {
-  //   if (window.scrollY >= top) {
-  //     navbar.classList.add("sticky");
-  //   } else {
-  //     navbar.classList.remove("sticky");
-  //   }
-  // }
-  // window.addEventListener("scroll", stickynavbar);
-
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };

@@ -92,7 +92,6 @@ body {
     background-color: white;
     width: 0px;
     height: calc(100vh);
-    /* height: 100%; */
     transition: all 0.3s ease-in;
     overflow: hidden;
   }
@@ -119,7 +118,6 @@ img {
 
 section {
   padding: 10px 0;
-  /* min-height: 100vh;*/
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -182,11 +180,6 @@ ul {
   padding-top: 7px;
   width: 50px;
 }
-/* 
-.contact-social ul li a:hover {
-  border: 1px solid #FAB702;
-  color: #FAB702;
-} */
 
 .contact-content img {
   max-width: 210px;
@@ -206,42 +199,7 @@ footer p {
 footer img {
   width: 44px;
 }
-/* footer{
-  background-color: hsl(0, 0%, 96%);
-  border-top: 0.5px solid black;
-}
-.footer{
-  display: flex;
-  flex-wrap: wrap;
 
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-logo{
-  width: 30vh;
-}
-
-.footer-link{
-  width: 7vh;
-  margin: 1vh;
-}
-.copyright{
-  text-align: center;
-  margin: 2vh;
-}
-@media only screen and (max-width: 700px) {
-  .footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-.logout-button{
-  border: none;
-  background-color: white;
-  font-size: 2.25vh;
-  cursor: pointer;
-} */
 /* ///////////////////////////////////////Form popup component/////////////////////////////////////////////////*/
 .Modal{
   position: fixed;
@@ -267,10 +225,7 @@ footer img {
   color: #3a54aa;
   margin-top: 2vh;
 }
-/* .FormPopup-container h4{
-  text-align: center;
-  margin-top: 3vh;
-} */
+
 .Formtextareadiv{
   width: min(90%,50vh);
   height: min(90%,40vh);

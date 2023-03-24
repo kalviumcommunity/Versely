@@ -147,11 +147,10 @@
   font-size: 3vh;
   width: 60vh;
 }
-/* .imgdiv{
-  width: min(60%, 60vh);} */
+
 
 .Box1 img{
-  /* width: min(60%,70vh); */
+
   width: 60vh;
 }
 .Box2{
@@ -175,7 +174,6 @@
 }
 .Box2 img{
   width: 40vh ;
-  /* max-width: 100%; */
 }
 .Content{
   margin-right: 30vh;
@@ -250,7 +248,6 @@
 }
 
 .animate :hover{
-  /* transform: translate3D(0,-1px,0) scale(1.03); */
   background-color: #183eb9;
   transform: 0.5s ease;
 }
@@ -291,10 +288,7 @@
 }
 
 /* ------------------Contribute Page-------------------- */
-/* .Form{
-width: min(90%, 70vh);
-margin-inline: auto;
-} */
+
 .Form h1{
   text-align: center;
   color: #3A54AA;
@@ -492,11 +486,6 @@ margin-inline: auto;
   }
 }
 
-/* #toast-container{
-  top:30px !important;
-  right:20px !important;
-  left:auto !important;
-} */
 
 /* ////////////////////////////////////reset page///////////////////////////////////////// */
 

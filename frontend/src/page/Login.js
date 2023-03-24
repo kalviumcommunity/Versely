@@ -3,7 +3,6 @@ import { UserContext } from "../App";
 import { Link, useNavigate } from "react-router-dom";
 import loginpic3 from "../asset/loginpic3.png";
 import logo from "../asset/logo.png";
-import google from "../asset/google.png";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

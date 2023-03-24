@@ -29,13 +29,11 @@ const GoogleAuth = () => {
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
-      client_id:
-        "12511528119-00kpb21f635ujf6h26ndva06af3lgcm9.apps.googleusercontent.com",
+      client_id: process.env.REACT_APP_GOOGLE,
       callback: handleCallbackResponse,
     });
     google.accounts.id.renderButton(document.getElementById("signindiv"), {
       theme: "outline",
-      // size: "large",
       width: "360",
     });
   }, []);

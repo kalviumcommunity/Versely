@@ -23,6 +23,7 @@ function Newpassword() {
   };
 
   const passwordREGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
   const PostData = () => {
     setLoading(true);
 
@@ -68,10 +69,6 @@ function Newpassword() {
     <div>
       <ToastContainer />
       <div className="reset-container">
-        {/* <div className="loginvectordiv">
-          <img className="loginvector" src={loginpic} alt="img" />
-        </div> */}
-
         <div className="Login-form">
           <div>
             <img className="logo" src={logo} alt="logo" />
