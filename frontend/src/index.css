@@ -596,3 +596,19 @@
   margin-left: 4vh;
   }
 }
+/* ==========================================================Error Page------------------------------------------ */
+.error-container{
+  margin-top: 10vh;
+  text-align: center;
+  margin-inline: auto;
+  width: 90%;
+}
+.error-container h1,h4{
+  font-weight: 400;
+  padding: 2vh;
+}
+.error404{
+  color: #3A54AA;
+  font-size: 30vh;
+  font-weight: bolder;
+}

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/drei": "^9.58.5",
+    "@react-three/fiber": "^8.12.0",
+    "js": "^0.1.0",
     "js-search": "^2.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^18.2.0",
@@ -12,6 +15,7 @@
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.1",
+    "three": "^0.150.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
