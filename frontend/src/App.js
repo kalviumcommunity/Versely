@@ -48,7 +48,7 @@ const Routing = () => {
         <Route path="/user" element={<User />} />
         <Route path="/termsandcondition" element={<Terms />} />
         <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/error" element={<Error />} />
       </Routes>
     </>
   );

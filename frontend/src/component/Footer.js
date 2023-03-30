@@ -7,7 +7,7 @@ import whatsapp from "../asset/whatsapp.svg";
 
 function Footer() {
   return (
-    <div>
+    <div className="footer-container">
       <section className="contact-area" id="contact">
         <div className="container">
           <div className="row">

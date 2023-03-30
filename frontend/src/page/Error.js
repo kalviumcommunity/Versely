@@ -1,34 +1,26 @@
 import React from "react";
-// import { Canvas } from "@react-three/fiber";
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-// import model from "../asset/untitled.gltf";
 
-// import { useGLTF, OrthographicCamera } from "@react-three/drei";
-
-// function Model() {
-//   const { nodes } = useGLTF("/untitled.glb");
+// function Error() {
 //   return (
-//     <mesh>
-//       <boxBufferGeometry attach="geometry" />
-//       <meshLamberMaterial attach="material" color="hotpink" />
-//     </mesh>
+//     <div className="error-container">
+//       <h1>Uh-Oh...</h1>
+//       <h4>
+//         The page you are looking for may have been moved, deleted,
+//         <br />
+//         or possibly never existed.
+//       </h4>
+//       <h1 className="error404">404</h1>
+//     </div>
 //   );
 // }
 
-// useGLTF.preload("/untitled.glb");
+// export default Error;
+import Spline from "@splinetool/react-spline";
 
-function Error() {
+export default function App() {
   return (
-    <div className="error-container">
-      <h1>Uh-Oh...</h1>
-      <h4>
-        The page you are looking for may have been moved, deleted,
-        <br />
-        or possibly never existed.
-      </h4>
-      <h1 className="error404">404</h1>
+    <div style={{ margin: "10vh", width: "90%" }}>
+      <Spline scene="https://prod.spline.design/hcE7aX7c93B4C7Ya/scene.splinecode" />
     </div>
   );
 }
-
-export default Error;
