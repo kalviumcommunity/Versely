@@ -13,7 +13,7 @@ function Navbar() {
   };
 
   const logout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     dispatch({ type: "CLEAR" });
   };
 

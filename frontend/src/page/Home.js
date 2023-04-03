@@ -15,7 +15,7 @@ function Home() {
     setLoading(true);
     fetch(process.env.REACT_APP_API + "api/alllyric", {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        Authorization: "Bearer " + sessionStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())

@@ -12,7 +12,7 @@ function Explore() {
   useEffect(() => {
     fetch(process.env.REACT_APP_API + "api/alllyric", {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        Authorization: "Bearer " + sessionStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())

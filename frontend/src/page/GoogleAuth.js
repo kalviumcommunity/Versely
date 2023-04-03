@@ -20,8 +20,8 @@ const GoogleAuth = () => {
     );
     const jsondata = await fetchdata.json();
 
-    localStorage.setItem("jwt", jsondata.jwtoken);
-    localStorage.setItem("user", JSON.stringify(jsondata.user));
+    sessionStorage.setItem("jwt", jsondata.jwtoken);
+    sessionStorage.setItem("user", JSON.stringify(jsondata.user));
     dispatch({ type: "USER", payload: jsondata.user });
     navigate("/");
     setLoading(false);

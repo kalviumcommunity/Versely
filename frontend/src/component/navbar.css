@@ -185,7 +185,7 @@ ul {
   max-width: 210px;
 }
 
-section,
+.footer-container section,
 footer {
   background: #3A54AA;
   color: white;

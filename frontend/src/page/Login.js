@@ -42,8 +42,8 @@ function Login() {
           toast.error(data.error);
           setLoading(false);
         } else {
-          localStorage.setItem("jwt", data.token);
-          localStorage.setItem("user", JSON.stringify(data.user));
+          sessionStorage.setItem("jwt", data.token);
+          sessionStorage.setItem("user", JSON.stringify(data.user));
           toast.success("Successfully Logged In");
           dispatch({ type: "USER", payload: data.user });
           setLoading(false);

@@ -77,6 +77,12 @@ function Song() {
                     </select>
                   </div>
                 ) : null}
+                <button
+                  className="improvementbutton"
+                  onClick={suggestImprovement}
+                >
+                  Suggest an improvement
+                </button>
               </article>
             </div>
             <div className="Song-lyrics-div">
@@ -92,12 +98,6 @@ function Song() {
                   <div className="AboutSongBox">
                     <h3>About the Song</h3>
                     <p>{lyrics.lyric.aboutLyrics}</p>
-                    <button
-                      className="improvementbutton"
-                      onClick={suggestImprovement}
-                    >
-                      Suggest an improvement
-                    </button>
                   </div>
                 ) : (
                   <div></div>
