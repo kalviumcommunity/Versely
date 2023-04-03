@@ -451,13 +451,13 @@
   text-align: center;
 }
 .improvementbutton{
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3vh;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin-top: 1vh;
   margin-bottom: 1vh;
-  width: 30vh;
+  width: 25vh;
   height: 5vh;
   color: white;
   background-color: #3A54AA;

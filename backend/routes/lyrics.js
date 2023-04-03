@@ -72,7 +72,6 @@ router.get("/lyric/:id", (req, res) => {
     .populate("postedBy", "_id name")
     .then((lyric) => {
       return res.json({ lyric });
-      console.log(req.user._id);
     })
     .catch((err) => {
       return res.status(404).json({ error: "lyrics not found" });
@@ -84,7 +83,6 @@ router.post("/suggest", requireAuth, (req, res) => {
   if (!content) {
     return res.status(422).json({ error: "please add required fields" });
   }
-  req.user.password = undefined;
   const suggest = new Suggest({
     option1,
     option2,

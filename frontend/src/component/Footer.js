@@ -11,7 +11,6 @@ function Footer() {
       <section className="contact-area" id="contact">
         <div className="container">
           <div className="row">
-            {/* <div className="col-lg-6 offset-lg-3"> */}
             <div className="contact-content text-center">
               <Link to="/">
                 <img src={logo} alt="logo" />

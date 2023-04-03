@@ -22,7 +22,7 @@ const Routing = () => {
   const location = useLocation();
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(sessionStorage.getItem("user"));
 
     if (user) {
       dispatch({ type: "USER", payload: user });

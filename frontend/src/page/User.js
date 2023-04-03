@@ -11,13 +11,13 @@ function User() {
     const fetchData = async () => {
       const response = await fetch(`${process.env.REACT_APP_API}api/mylyric`, {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
+          Authorization: "Bearer " + sessionStorage.getItem("jwt"),
         },
       });
       const json = await response.json();
       setLyrics(json);
     };
-    const loggedinUser = JSON.parse(localStorage.getItem("user"));
+    const loggedinUser = JSON.parse(sessionStorage.getItem("user"));
     setUser(loggedinUser);
     fetchData();
   }, []);

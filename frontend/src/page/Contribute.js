@@ -42,7 +42,7 @@ function Contribute() {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        Authorization: "Bearer " + sessionStorage.getItem("jwt"),
       },
       body: JSON.stringify({
         SongName,

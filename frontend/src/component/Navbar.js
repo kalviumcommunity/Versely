@@ -13,7 +13,7 @@ function Navbar() {
   };
 
   const logout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     dispatch({ type: "CLEAR" });
   };
 
@@ -32,9 +32,6 @@ function Navbar() {
           </li>,
           <li>
             <NavLink to="/user">My Profile</NavLink>
-          </li>,
-          <li>
-            <NavLink to="/error">error</NavLink>
           </li>,
           <li>
             <NavLink onClick={logout} to="/login">

@@ -5,17 +5,13 @@
   "dependencies": {
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.273",
-    "js": "^0.1.0",
-    "js-search": "^2.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-spinners": "^0.13.8",
-    "react-toastify": "^9.1.1",
-    "web-vitals": "^2.1.4"
+    "react-toastify": "^9.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
