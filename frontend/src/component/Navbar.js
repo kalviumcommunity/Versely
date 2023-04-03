@@ -34,6 +34,9 @@ function Navbar() {
             <NavLink to="/user">My Profile</NavLink>
           </li>,
           <li>
+            <NavLink to="/error">error</NavLink>
+          </li>,
+          <li>
             <NavLink onClick={logout} to="/login">
               Logout
             </NavLink>
