@@ -6,9 +6,12 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Razorpay = require("razorpay");
+const shortid = require("shortid");
 const LogoImg =
   "http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png";
 const User = require("../models/userModel");
+const Donate = require("../models/donateModel");
 const requireAuth = require("../middleware/Auth");
 const JWT_SECRET = process.env.SECRET;
 const nodemailer = require("nodemailer");
@@ -196,3 +199,35 @@ router.post("/auth/googleauth", async (req, res) => {
   }
 });
 module.exports = router;
+
+////////////////////////////////////////Razorpay Payment Routes////////////////////////////////////
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_SECRET,
+});
+
+router.post("/razorpay", async (req, res) => {
+  const payment_capture = 1;
+  const amount = 10;
+  const currency = "INR";
+
+  const options = {
+    amount: amount * 100,
+    currency: currency,
+    receipt: shortid.generate(),
+    payment_capture,
+  };
+
+  try {
+    const response = await razorpay.orders.create(options);
+    console.log(response);
+    res.json({
+      id: response.id,
+      currency: response.currency,
+      amount: response.amount,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});

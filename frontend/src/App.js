@@ -13,7 +13,6 @@ import { reducer, initialState } from "./reducers/userReducer";
 import User from "./page/User";
 import Terms from "./page/T&C";
 import Aboutus from "./page/Aboutus";
-import Error from "./page/Error";
 
 export const UserContext = createContext();
 
@@ -29,7 +28,6 @@ const Routing = () => {
       navigate("/");
     } else {
       if (!location.pathname.startsWith("/reset")) navigate("/login");
-      if (!location.pathname.startsWith("*")) navigate("/login");
     }
   }, []);
 
@@ -48,7 +46,6 @@ const Routing = () => {
         <Route path="/user" element={<User />} />
         <Route path="/termsandcondition" element={<Terms />} />
         <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="/error" element={<Error />} />
       </Routes>
     </>
   );
