@@ -609,6 +609,21 @@
 }
 .error404{
   color: #3A54AA;
-  font-size: 30vh;
+  font-size: min(900%,30vh);
   font-weight: bolder;
+  text-align: center;
+}
+
+/* ////////////////////////////////Scroll button//////////////////////////////////// */
+
+.ScrollButton{
+  position: fixed;
+    width: 100%;
+    left: 50%;
+    bottom: 40px;
+    height: 20px;
+    font-size: 3rem;
+    z-index: 1;
+    cursor: pointer;
+    color: green;
 }

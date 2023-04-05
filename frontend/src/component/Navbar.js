@@ -34,9 +34,6 @@ function Navbar() {
             <NavLink to="/user">My Profile</NavLink>
           </li>,
           <li>
-            <NavLink to="/error">error</NavLink>
-          </li>,
-          <li>
             <NavLink onClick={logout} to="/login">
               Logout
             </NavLink>
@@ -45,6 +42,12 @@ function Navbar() {
       : [
           <li>
             <NavLink to="/">Home</NavLink>
+          </li>,
+          <li>
+            <NavLink to="/explore">Explore</NavLink>
+          </li>,
+          <li>
+            <NavLink to={state ? "/contribute" : "/login"}>Contribute</NavLink>
           </li>,
           <li>
             <NavLink to="/signup">Signup</NavLink>
