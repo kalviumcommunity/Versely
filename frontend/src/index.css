@@ -609,6 +609,7 @@
 }
 .error404{
   color: #3A54AA;
-  font-size: 30vh;
+  font-size: min(900%,30vh);
   font-weight: bolder;
+  text-align: center;
 }

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 import "react-toastify/dist/ReactToastify.css";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
+import { UserContext } from "../App";
 
 function FormPopup({ isOpen, notOpen, lyrics }) {
   const [option1, setOption1] = useState(false);
@@ -13,8 +14,16 @@ function FormPopup({ isOpen, notOpen, lyrics }) {
   const [content, setContent] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const { state } = useContext(UserContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state) {
+      alert("Kindly login before continuing");
+      navigate("/login");
+    }
+  }, []);
+
   const modalfunction = () => {
     if (isOpen) {
       notOpen(false);

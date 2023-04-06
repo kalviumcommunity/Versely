@@ -11,7 +11,6 @@ const shortid = require("shortid");
 const LogoImg =
   "http://res.cloudinary.com/dccplpniz/image/upload/v1678773937/y012gjuhmboj5y9mie0i.png";
 const User = require("../models/userModel");
-const Donate = require("../models/donateModel");
 const requireAuth = require("../middleware/Auth");
 const JWT_SECRET = process.env.SECRET;
 const nodemailer = require("nodemailer");
