@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
+import Avatar from "@mui/material/Avatar";
 
 function User() {
   const [lyrics, setLyrics] = useState(null);
   const [user, setUser] = useState("");
+  const loggedinUser = JSON.parse(sessionStorage.getItem("user"));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,32 +19,25 @@ function User() {
       const json = await response.json();
       setLyrics(json);
     };
-    const loggedinUser = JSON.parse(sessionStorage.getItem("user"));
+
     setUser(loggedinUser);
     fetchData();
   }, []);
-  console.log(lyrics);
-
   return (
     <div>
       <Navbar />
       <div className="profilepage">
-        <h1>My Profile</h1>
-        <div>
-          <h2 style={{ color: "#3a54aa" }}>Name: {user.name}</h2>
-          <h3>
-            <h2 style={{ color: "#3a54aa" }}>Email: {user.email}</h2>
-          </h3>
-          <h4
-            style={{
-              marginBottom: "2vh",
-              marginTop: "2vh",
-              color: "#3a54aa",
-              textDecoration: "none",
-            }}
-          >
-            <Link to="/reset">Reset Password</Link>
-          </h4>
+        <div className="profile-detail-container">
+          <div className="Avatar-div">
+            <Avatar
+              alt="Remy Sharp"
+              sx={{ width: 200, height: 200, bgcolor: "#3a54aa" }}
+            />
+          </div>
+          <div className="Profile-detail">
+            <h2 style={{ color: "#3a54aa" }}>{user.name}</h2>
+            <h2 style={{ color: "#000000" }}>{user.email}</h2>
+          </div>
         </div>
         <div className="Song-container">
           <h1>Lyrics Contributed By you</h1>
