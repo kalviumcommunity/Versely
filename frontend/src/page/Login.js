@@ -7,6 +7,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoogleAuth from "./GoogleAuth";
+import Spline from "@splinetool/react-spline";
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
@@ -61,7 +62,11 @@ function Login() {
       <ToastContainer />
       <div className="login-container">
         <div className="loginvectordiv">
-          <img className="loginvector3" src={loginpic3} alt="img" />
+          {/* <img className="loginvector3" src={loginpic3} alt="img" /> */}
+          <Spline
+            className="spline"
+            scene="https://prod.spline.design/dfzMpZeLG0LFJHgv/scene.splinecode"
+          />
         </div>
 
         <div className="Login-form">

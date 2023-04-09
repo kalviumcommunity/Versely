@@ -14,6 +14,7 @@ import User from "./page/User";
 import Terms from "./page/T&C";
 import Aboutus from "./page/Aboutus";
 import Error from "./page/Error";
+import Razorpay from "./page/Razorpay";
 export const UserContext = createContext();
 
 const Routing = () => {
@@ -32,6 +33,7 @@ const Routing = () => {
         <Route path="/user" element={<User />} />
         <Route path="/termsandcondition" element={<Terms />} />
         <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/pay" element={<Razorpay />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>

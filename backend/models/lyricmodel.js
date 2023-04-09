@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
+const id = mongoose.Schema.Types.ObjectId;
 
 const lyricSchema = new mongoose.Schema({
   SongName: {

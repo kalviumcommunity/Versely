@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../asset/whitelogo.png";
 import linkedin from "../asset/linkedin.svg";
 import github from "../asset/github.svg";
 import whatsapp from "../asset/whatsapp.svg";
+import { UserContext } from "../App";
 
 function Footer() {
+  const { state } = useContext(UserContext);
   return (
     <div className="footer-container">
       <section className="contact-area" id="contact">
@@ -34,6 +36,33 @@ function Footer() {
                   </li>
                   <li>
                     <Link to="/termsandcondition">T&C</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="contact-social">
+                <ul>
+                  <li>
+                    <button
+                      className="improvementbutton"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginInline: "auto",
+                        backgroundColor: "white",
+                      }}
+                    >
+                      <Link
+                        className="linkbutton"
+                        to={state ? "/pay" : "/login"}
+                        style={{
+                          color: "black",
+                          width: "50vh",
+                          marginTop: "2.5vh",
+                        }}
+                      >
+                        Buy me a coffee
+                      </Link>
+                    </button>
                   </li>
                 </ul>
               </div>
