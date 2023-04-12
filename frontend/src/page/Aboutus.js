@@ -119,7 +119,7 @@ function Aboutus() {
             </button>
           </div>
           <div className="backtohome">
-            <a href="https://versely.pages.dev">Back to home</a>
+            <Link to="/">Back to Home</Link>
           </div>
         </div>
       </div>
