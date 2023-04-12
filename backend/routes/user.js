@@ -27,6 +27,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Route for Signing up the user
 router.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
   if (!email || !password || !name) {
@@ -77,6 +78,7 @@ router.post("/signup", (req, res) => {
     });
 });
 
+// Route for Signing In the user
 router.post("/signin", (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -101,6 +103,7 @@ router.post("/signin", (req, res) => {
   });
 });
 
+// Route for reseting the password
 router.post("/reset-password", (req, res) => {
   crypto.randomBytes(32, (err, buffer) => {
     if (err) {
@@ -133,6 +136,7 @@ router.post("/reset-password", (req, res) => {
   });
 });
 
+// Route for setting up a new password
 router.post("/new-password", (req, res) => {
   const newPassword = req.body.password;
   const sentToken = req.body.token;
@@ -167,6 +171,7 @@ async function verifyToken(token) {
   return user;
 }
 
+// Route for  Signing in the user using Google
 router.post("/auth/googleauth", async (req, res) => {
   const { token } = req.body;
 
@@ -199,7 +204,7 @@ router.post("/auth/googleauth", async (req, res) => {
 });
 module.exports = router;
 
-////////////////////////////////////////Razorpay Payment Routes////////////////////////////////////
+// Razorpay Payment Routes
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
