@@ -18,6 +18,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// API for getting all the Lyrics
 router.get("/alllyric", (req, res) => {
   Lyric.find()
     .populate("postedBy", "_id name")
@@ -29,6 +30,7 @@ router.get("/alllyric", (req, res) => {
     });
 });
 
+// To POST a new lyric
 router.post("/createlyric", requireAuth, (req, res) => {
   const { SongName, Artist, lyrics, language, LangLyrics, aboutLyrics, image } =
     req.body;
@@ -56,6 +58,7 @@ router.post("/createlyric", requireAuth, (req, res) => {
     });
 });
 
+// To GET lyric posted by a single user
 router.get("/mylyric", requireAuth, (req, res) => {
   Lyric.find({ postedBy: req.user.id })
     .populate("postedBy", "_id name email")
@@ -67,6 +70,7 @@ router.get("/mylyric", requireAuth, (req, res) => {
     });
 });
 
+// To GET single lyrics Data by their id
 router.get("/lyric/:id", (req, res) => {
   Lyric.findOne({ _id: req.params.id })
     .populate("postedBy", "_id name")
@@ -78,6 +82,7 @@ router.get("/lyric/:id", (req, res) => {
     });
 });
 
+// route for users to suggest a improvement in the existing lyric
 router.post("/suggest", requireAuth, (req, res) => {
   const { option1, option2, option3, option4, content, SongName } = req.body;
   if (!content) {

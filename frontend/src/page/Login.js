@@ -13,6 +13,7 @@ function Login() {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [modelLoad, setmodelLoad] = useState(true);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
