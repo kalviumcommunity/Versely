@@ -12,7 +12,7 @@ const app = express();
 
 // middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors("https://versely-go.onrender.com/getposts"));
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
