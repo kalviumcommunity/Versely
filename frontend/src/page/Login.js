@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../App";
 import { Link, useNavigate } from "react-router-dom";
-// import loginpic3 from "../asset/loginpic3.png";
+import loginpic3 from "../asset/loginpic3.png";
 import logo from "../asset/logo.png";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ToastContainer, toast } from "react-toastify";
@@ -68,7 +68,6 @@ function Login() {
             scene="https://prod.spline.design/dfzMpZeLG0LFJHgv/scene.splinecode"
           />
         </div>
-
         <div className="Login-form">
           <div>
             <img className="logo" src={logo} alt="logo" />
