@@ -53,7 +53,7 @@ function Footer() {
                     >
                       <Link
                         className="linkbutton"
-                        to={state ? "/pay" : "/login"}
+                        to="/pay"
                         style={{
                           color: "black",
                           width: "50vh",

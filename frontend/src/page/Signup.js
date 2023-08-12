@@ -136,9 +136,7 @@ function Signup() {
             </button>
           </div>
           <div>
-            <div>
-              <GoogleAuth />
-            </div>
+            <div>{/* <GoogleAuth /> */}</div>
           </div>
           <div>
             <p className="Login-Title">

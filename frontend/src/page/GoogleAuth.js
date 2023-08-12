@@ -5,9 +5,10 @@ const GoogleAuth = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { state, dispatch } = useContext(UserContext);
+  console.log(process.env.REACT_APP_GOOGLE);
   const handleCallbackResponse = async (response) => {
     const fetchdata = await fetch(
-      process.env.REACT_APP_API + "api/user/auth/googleauth",
+      "http://localhost:7000/api/user/auth/googleauth",
       {
         method: "POST",
         headers: {
